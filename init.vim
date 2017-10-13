@@ -19,6 +19,7 @@ call plug#end()
 let g:SuperTabDefaultCompletionType = "<c-n>"
 let g:deoplete#enable_at_startup = 1
 
+let $TERM = "vte"
 
 " Wrapping options
 set wrap

@@ -12,6 +12,11 @@ Plug 'ervandew/supertab'
 Plug 'kien/ctrlp.vim'
 Plug 'mbbill/undotree'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'dhruvasagar/vim-table-mode'
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'vim-scripts/repeat.vim'
+Plug 'kana/vim-textobj-user'
 
 call plug#end()
 
@@ -30,8 +35,13 @@ set ignorecase
 set smartcase
 set hlsearch
 
-" Spell settings
+" Set vim to show whitespace
+set lcs=tab:>-,space:.,eol:§
+set list
+
+" Markdown settings
 autocmd FileType markdown setlocal spell
+autocmd FileType markdown setlocal nolist
 
 
 " Tab settings
@@ -50,9 +60,6 @@ set mouse=a
 colorscheme basic-dark
 hi Normal ctermbg=NONE
 
-" Set vim to show whitespace
-set lcs=tab:>-,space:.,eol:§
-set list
 
 " Save the undo history between sessions
 set undofile
@@ -80,6 +87,10 @@ nnoremap <A-l> <C-w>l
 
 nnoremap <F5> :UndotreeToggle<cr>
 
+function! Cite()
+    r!pandoc-cite
+endfunction
+
 "
 " Autocommands
 "
@@ -88,3 +99,12 @@ if !exists("initvim_autocmds")
   autocmd InsertLeave * pclose
 endif
 
+" vim-textobj-user custom text objects
+
+call textobj#user#plugin('mdemph', {
+\   'emph-text': {
+\       'pattern': ['\*', '\*'],
+\       'select-a': 'aB',
+\       'select-i': 'iB',
+\   },
+\ })

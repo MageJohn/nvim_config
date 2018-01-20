@@ -4,7 +4,7 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'zcodes/vim-colors-basic'
+Plug 'MageJohn/vim-colors-basic'
 Plug 'vim-scripts/surround.vim'
 Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi'

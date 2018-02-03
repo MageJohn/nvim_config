@@ -69,8 +69,8 @@ set undodir=~/.config/nvim/undo/
 " vim-pandoc settings
 let g:pandoc#modules#disabled = ["folding"]
 let g:pandoc#command#latex_engine = "pdflatex"
-let g:pandoc#command#autoexec_on_writes = 1
-let g:pandoc_command_autoexec_command = "Pandoc pdf --filter pandoc-fignos --filter pandoc-tablenos --filter pandoc-wrapfig --filter pandoc-citeproc --template eisvogel"
+
+command! CollegeMDCompile !pandoc %:t ~/Sync/pandoc_metadata.yaml -o %:t:r.pdf --filter pandoc-fignos --filter pandoc-tablenos --filter pandoc-citeproc --template eisvogel
 
 "
 " Maps

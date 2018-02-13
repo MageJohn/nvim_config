@@ -17,6 +17,7 @@ Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vim-scripts/repeat.vim'
 Plug 'kana/vim-textobj-user'
+Plug 'nvie/vim-flake8'
 
 call plug#end()
 

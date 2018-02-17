@@ -18,7 +18,7 @@ Plug 'chriskempson/base16-vim'
 Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi'
 Plug 'ervandew/supertab'
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
 Plug 'terryma/vim-multiple-cursors'
 Plug 'dhruvasagar/vim-table-mode'
@@ -206,3 +206,9 @@ let g:sandwich#recipes += [
   \     'input': ['t']
   \   },
   \ ]
+
+"
+" Source a machine local config file, which is in the .gitignore
+"
+
+runtime init.local.vim

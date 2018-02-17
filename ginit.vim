@@ -1,3 +1,3 @@
 call GuiWindowMaximized(1)
-Guifont DejaVu Sans Mono:h12
-colorscheme basic-dark
+Guifont Source Code Pro:h9
+colorscheme base16-tomorrow-night

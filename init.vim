@@ -165,8 +165,8 @@ nnoremap <A-l> <C-w>l
 
 " Unmap the s command. It's pretty useless anyway, and it conflicts with
 " vim-sandwich
-nmap s <Nop>
-xmap s <Nop>
+"nmap s <Nop>
+"xmap s <Nop>
 
 
 "
@@ -206,6 +206,19 @@ let g:sandwich#recipes += [
   \     'input': ['t']
   \   },
   \ ]
+
+" Neomake makers
+let g:neomake_pandoc_college_maker = {
+    \ 'exe': 'pandoc',
+    \ 'args': ['%:p',
+    \          '~/Sync/pandoc_metadata.yaml',
+    \          '-o', '%:t:r.pdf',
+    \          '--filter', 'pandoc-fignos',
+    \          '--filter', 'pandoc-tablenos',
+    \          '--filter', 'pandoc-citeproc',
+    \          '--template', 'eisvogel'
+    \         ]
+    \ }
 
 "
 " Source a machine local config file, which is in the .gitignore

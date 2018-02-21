@@ -124,7 +124,7 @@ augroup on_change_colorschema
 augroup END
 
 let base16colorspace = 256
-colorscheme base16-pop  " also set in ginit.vim
+colorscheme base16-phd
 
 
 "

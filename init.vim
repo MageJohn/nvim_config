@@ -99,7 +99,12 @@ command! CollegeMDCompile !pandoc %:t ~/Sync/pandoc_metadata.yaml -o %:t:r.pdf -
 
 " Neomake settings
 let g:neomake_python_enabled_makers = ['flake8']
-call neomake#configure#automake('nw', 750)
+let g:neomake_pandoc_enabled_makers = ['college']
+augroup initvim_neomake
+  autocmd!
+  autocmd FileType python call neomake#configure#automake('nw', 750)
+  autocmd FileType pandoc call neomake#configure#automake('w')
+augroup END
 
 
 "

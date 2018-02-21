@@ -18,7 +18,6 @@ Plug 'chriskempson/base16-vim'
 Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi'
 Plug 'ervandew/supertab'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
 Plug 'terryma/vim-multiple-cursors'
 Plug 'dhruvasagar/vim-table-mode'
@@ -29,7 +28,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'neomake/neomake'
 Plug 'machakann/vim-sandwich'
-Plug 'cloudhead/neovim-fuzzy'
 Plug 'Shougo/denite.nvim', {'do': ':UpdateRemotePlugins' }
 Plug 'tpope/vim-capslock'
 
@@ -148,6 +146,9 @@ nnoremap <Leader>u :UndotreeToggle<CR>
 
 " Open the location list
 nnoremap <Leader>l :lopen<CR>
+
+" Map Ctrl-^ to something more accesible
+nnoremap <Leader><Tab> <C-^>
 
 " Move up and down screen lines instead of buffer lines
 nnoremap k gk

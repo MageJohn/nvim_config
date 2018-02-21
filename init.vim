@@ -153,6 +153,12 @@ nnoremap <Leader>l :lopen<CR>
 nnoremap k gk
 nnoremap j gj
 
+" Denite maps
+nnoremap <Leader>dc :Denite colorscheme<CR>
+nnoremap <Leader>db :Denite buffer<CR>
+nnoremap <Leader>dd :Denite directory_rec<CR>
+nnoremap <Leader>df :Denite file_rec <CR>
+
 " Switch windows with Alt+(h,j,k,l), even in neovim's terminal
 tnoremap <A-h> <C-\><C-n><C-w>h
 tnoremap <A-j> <C-\><C-n><C-w>j

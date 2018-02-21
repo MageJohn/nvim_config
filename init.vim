@@ -61,11 +61,6 @@ set lcs=tab:>-,space:.,eol:§
 set list
 
 
-" Markdown settings
-autocmd FileType markdown setlocal spell
-autocmd FileType markdown setlocal nolist
-
-
 " Indentation settings
 set tabstop=4
 set shiftwidth=4
@@ -176,6 +171,8 @@ nnoremap <A-l> <C-w>l
 augroup initvim
   autocmd!
   autocmd InsertLeave * pclose
+  autocmd FileType markdown setlocal spell
+  autocmd FileType markdown setlocal nolist
 augroup END
 
 

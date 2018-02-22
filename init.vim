@@ -102,6 +102,9 @@ augroup initvim_neomake
   autocmd FileType pandoc call neomake#configure#automake('w')
 augroup END
 
+" vim-sandwich settings
+let g:textobj_sandwich_no_default_key_mappings = 1 " redefined in Maps
+
 
 "
 " Colorscheme settings
@@ -157,6 +160,17 @@ nnoremap <Leader>dc :Denite colorscheme<CR>
 nnoremap <Leader>db :Denite buffer<CR>
 nnoremap <Leader>dd :Denite directory_rec<CR>
 nnoremap <Leader>df :Denite file_rec <CR>
+
+" vim-sandwich mapping
+xmap ib <Plug>(textobj-sandwich-auto-i)
+omap ib <Plug>(textobj-sandwich-auto-i)
+xmap ab <Plug>(textobj-sandwich-auto-a)
+omap ab <Plug>(textobj-sandwich-auto-a)
+
+xmap iq <Plug>(textobj-sandwich-query-i)
+omap iq <Plug>(textobj-sandwich-query-i)
+xmap aq <Plug>(textobj-sandwich-query-a)
+omap aq <Plug>(textobj-sandwich-query-a)
 
 " Switch windows with Alt+(h,j,k,l), even in neovim's terminal
 tnoremap <A-h> <C-\><C-n><C-w>h

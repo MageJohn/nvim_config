@@ -175,6 +175,12 @@ nnoremap <A-l> <C-w>l
 
 
 "
+" Custom commands
+"
+command! ClearLocList lexpr []
+
+
+"
 " Autocommands
 " ?autocmd
 "

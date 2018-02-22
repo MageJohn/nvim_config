@@ -3,7 +3,7 @@
 "
 
 if &compatible
-  set nocompatible
+    set nocompatible
 endif
 
 
@@ -96,9 +96,9 @@ let g:pandoc#modules#disabled = ["folding"]
 let g:neomake_python_enabled_makers = ['flake8']
 let g:neomake_pandoc_enabled_makers = ['college']
 augroup initvim_neomake
-  autocmd!
-  autocmd FileType python call neomake#configure#automake('nw', 750)
-  autocmd FileType pandoc call neomake#configure#automake('w')
+    autocmd!
+    autocmd FileType python call neomake#configure#automake('nw', 750)
+    autocmd FileType pandoc call neomake#configure#automake('w')
 augroup END
 
 " vim-sandwich settings
@@ -111,14 +111,14 @@ let g:textobj_sandwich_no_default_key_mappings = 1 " redefined in Maps
 "
 
 function! s:base16_customize() abort
-  call Base16hi("NonText", g:base16_gui01, "", g:base16_cterm01, "", "", "")
-  call Base16hi("Whitespace", g:base16_gui01, "", g:base16_cterm01, "", "", "")
-  hi Normal ctermbg=NONE
+    call Base16hi("NonText", g:base16_gui01, "", g:base16_cterm01, "", "", "")
+    call Base16hi("Whitespace", g:base16_gui01, "", g:base16_cterm01, "", "", "")
+    "hi Normal ctermbg=NONE
 endfunction
 
 augroup on_change_colorschema
-  autocmd!
-  autocmd ColorScheme * call s:base16_customize()
+    autocmd!
+    autocmd ColorScheme * call s:base16_customize()
 augroup END
 
 let base16colorspace = 256
@@ -198,10 +198,10 @@ command! ClearLocList lexpr []
 " ?autocmd
 "
 augroup initvim
-  autocmd!
-  autocmd InsertLeave * pclose
-  autocmd FileType markdown setlocal spell
-  autocmd FileType markdown setlocal nolist
+    autocmd!
+    autocmd InsertLeave * pclose
+    autocmd FileType markdown setlocal spell
+    autocmd FileType markdown setlocal nolist
 augroup END
 
 
@@ -213,28 +213,28 @@ augroup END
 " vim-sandwich recipes
 let g:sandwich#recipes = deepcopy(g:sandwich#default_recipes)
 let g:sandwich#recipes += [
-  \   {
-  \     'buns': ['(', ')'],
-  \     'cursor': 'head',
-  \     'command': ['startinsert'],
-  \     'kind': ['add', 'replace'],
-  \     'action': ['add'],
-  \     'input': ['t']
-  \   },
-  \ ]
+\   {
+\       'buns': ['(', ')'],
+\       'cursor': 'head',
+\       'command': ['startinsert'],
+\       'kind': ['add', 'replace'],
+\       'action': ['add'],
+\       'input': ['t']
+\   }
+\]
 
 " Neomake makers
 let g:neomake_pandoc_college_maker = {
-    \ 'exe': 'pandoc',
-    \ 'args': ['%:p',
-    \          '~/Sync/pandoc_metadata.yaml',
-    \          '-o', '%:t:r.pdf',
-    \          '--filter', 'pandoc-fignos',
-    \          '--filter', 'pandoc-tablenos',
-    \          '--filter', 'pandoc-citeproc',
-    \          '--template', 'eisvogel'
-    \         ]
-    \ }
+\   'exe': 'pandoc',
+\   'args': ['%:p',
+\            '~/Sync/pandoc_metadata.yaml',
+\            '-o', '%:t:r.pdf',
+\            '--filter', 'pandoc-fignos',
+\            '--filter', 'pandoc-tablenos',
+\            '--filter', 'pandoc-citeproc',
+\            '--template', 'eisvogel'
+\           ]
+\}
 
 "
 " Source a machine local config file, which is in the .gitignore

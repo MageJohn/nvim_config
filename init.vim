@@ -219,7 +219,15 @@ let g:sandwich#recipes += [
 \       'command': ['startinsert'],
 \       'kind': ['add', 'replace'],
 \       'action': ['add'],
-\       'input': ['t']
+\       'input': ['f']
+\   },
+\   {
+\       'buns': ['*', '*']
+\   },
+\   {
+\       'buns': ['"""', '"""'],
+\       'input': ['m'],
+\       'filetype': ['python']
 \   }
 \]
 

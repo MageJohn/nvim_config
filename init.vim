@@ -92,8 +92,6 @@ set noshowmode
 
 " vim-pandoc settings
 let g:pandoc#modules#disabled = ["folding"]
-let g:pandoc#command#latex_engine = "pdflatex"
-command! CollegeMDCompile !pandoc %:t ~/Sync/pandoc_metadata.yaml -o %:t:r.pdf --filter pandoc-fignos --filter pandoc-tablenos --filter pandoc-citeproc --template eisvogel
 
 " Neomake settings
 let g:neomake_python_enabled_makers = ['flake8']

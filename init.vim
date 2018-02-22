@@ -23,7 +23,6 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
-Plug 'kana/vim-textobj-user'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'neomake/neomake'
@@ -210,16 +209,6 @@ augroup END
 " Vim plugin block configs
 " ?blocks
 "
-
-" vim-textobj-user custom text objects
-
-call textobj#user#plugin('mdemph', {
-\   'emph-text': {
-\       'pattern': ['\*', '\*'],
-\       'select-a': 'aB',
-\       'select-i': 'iB',
-\   },
-\ })
 
 " vim-sandwich recipes
 let g:sandwich#recipes = deepcopy(g:sandwich#default_recipes)

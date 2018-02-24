@@ -87,6 +87,7 @@ let g:deoplete#enable_at_startup = 1
 " vim-airline settings
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#whitespace#enabled = 0
 set noshowmode
 
 " vim-pandoc settings

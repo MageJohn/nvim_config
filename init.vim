@@ -225,6 +225,9 @@ let g:sandwich#recipes += [
 \       'buns': ['*', '*']
 \   },
 \   {
+\       'buns': ['$', '$']
+\   },
+\   {
 \       'buns': ['"""', '"""'],
 \       'input': ['m'],
 \       'filetype': ['python']

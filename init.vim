@@ -244,6 +244,17 @@ let g:neomake_pandoc_college_maker = {
 \            '--template', 'eisvogel'
 \           ]
 \}
+let g:neomake_pandoc_collegetex_maker = {
+\   'exe': 'pandoc',
+\   'args': ['%:p',
+\            '~/Sync/pandoc_metadata.yaml',
+\            '-o', '%:t:r.tex',
+\            '--filter', 'pandoc-fignos',
+\            '--filter', 'pandoc-tablenos',
+\            '--filter', 'pandoc-citeproc',
+\            '--template', 'eisvogel'
+\           ]
+\}
 
 "
 " Source a machine local config file, which is in the .gitignore

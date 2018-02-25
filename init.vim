@@ -92,6 +92,7 @@ set noshowmode
 
 " vim-pandoc settings
 let g:pandoc#modules#disabled = ["folding"]
+let g:pandoc#syntax#conceal#use = 0
 
 " Neomake settings
 let g:neomake_python_enabled_makers = ['flake8']

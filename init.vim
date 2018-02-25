@@ -101,6 +101,7 @@ augroup initvim_neomake
     autocmd!
     autocmd FileType python call neomake#configure#automake('nw', 750)
     autocmd FileType pandoc call neomake#configure#automake('w')
+    autocmd User NeomakeFinished nested echom 'Neomake finished'
 augroup END
 
 " vim-sandwich settings

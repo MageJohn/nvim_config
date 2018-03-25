@@ -260,7 +260,8 @@ let g:neomake_pandoc_collegetex_maker = {
 \            '--filter', 'pandoc-tablenos',
 \            '--filter', 'pandoc-citeproc',
 \            '--template', 'eisvogel'
-\           ]
+\           ],
+\   'append_file': 0
 \}
 
 "

@@ -29,6 +29,7 @@ Plug 'neomake/neomake'
 Plug 'machakann/vim-sandwich'
 Plug 'Shougo/denite.nvim', {'do': ':UpdateRemotePlugins' }
 Plug 'tpope/vim-capslock'
+Plug 'mhinz/vim-startify'
 
 call plug#end()
 

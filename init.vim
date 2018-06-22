@@ -140,8 +140,8 @@ let mapleader  = ";"
 " Stop the highlighting from the last search
 nnoremap <Leader>h :noh<CR>
 
-" Start editing my vi config in a new tab
-nnoremap <Leader>ec :tabe $MYVIMRC<CR>
+" Start editing my vi config in a new buffer
+nnoremap <Leader>ec :e $MYVIMRC<CR>
 
 " Save and source the current file (for editing a vi config)
 nnoremap <Leader>ws :w <bar> so %<CR>

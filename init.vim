@@ -30,6 +30,7 @@ Plug 'machakann/vim-sandwich'
 Plug 'Shougo/denite.nvim', {'do': ':UpdateRemotePlugins' }
 Plug 'tpope/vim-capslock'
 Plug 'mhinz/vim-startify'
+Plug 'othree/html5.vim'
 
 call plug#end()
 

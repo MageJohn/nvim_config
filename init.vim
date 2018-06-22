@@ -154,6 +154,9 @@ nnoremap <Leader>l :lopen<CR>
 " Map Ctrl-^ to something more accesible
 nnoremap <Leader><Tab> <C-^>
 
+" Insert a literal tab in insert mode
+inoremap <S-Tab> <C-V><Tab>
+
 " Move up and down screen lines instead of buffer lines
 nnoremap k gk
 nnoremap j gj

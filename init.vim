@@ -243,27 +243,8 @@ let g:sandwich#recipes += [
 
 " Neomake makers
 let g:neomake_pandoc_college_maker = {
-\   'exe': 'pandoc',
-\   'args': ['%:p',
-\            '~/Sync/pandoc_metadata.yaml',
-\            '-o', '%:t:r.pdf',
-\            '--filter', 'pandoc-fignos',
-\            '--filter', 'pandoc-tablenos',
-\            '--filter', 'pandoc-citeproc',
-\            '--template', 'eisvogel'
-\           ],
-\   'append_file': 0
-\}
-let g:neomake_pandoc_collegetex_maker = {
-\   'exe': 'pandoc',
-\   'args': ['%:p',
-\            '~/Sync/pandoc_metadata.yaml',
-\            '-o', '%:t:r.tex',
-\            '--filter', 'pandoc-fignos',
-\            '--filter', 'pandoc-tablenos',
-\            '--filter', 'pandoc-citeproc',
-\            '--template', 'eisvogel'
-\           ],
+\   'exe': 'make',
+\   'args': ['%:t:r.pdf'],
 \   'append_file': 0
 \}
 

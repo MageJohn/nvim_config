@@ -31,6 +31,7 @@ Plug 'Shougo/denite.nvim', {'do': ':UpdateRemotePlugins' }
 Plug 'tpope/vim-capslock'
 Plug 'mhinz/vim-startify'
 Plug 'othree/html5.vim'
+Plug 'junegunn/vim-easy-align'
 
 call plug#end()
 
@@ -48,17 +49,14 @@ set hidden
 set wrap
 set linebreak
 
-
 " Search settings
 set ignorecase
 set smartcase
 set hlsearch
 
-
 " Set vim to show whitespace
 set lcs=tab:>-,space:.,eol:§
 set list
-
 
 " Indentation settings
 set tabstop=4
@@ -75,6 +73,28 @@ set mouse=a
 " Save the undo history between sessions
 set undofile
 set undodir=~/.config/nvim/undo/
+
+" Autocommands
+" -> General
+augroup initvim_general
+    autocmd!
+    autocmd InsertLeave * pclose
+augroup END
+" -> FileType settings
+"    -> markdown
+augroup initvim_md
+    autocmd!
+    autocmd FileType markdown setlocal spell
+    autocmd FileType markdown setlocal nolist
+augroup END
+"    -> tex
+augroup initvim_tex
+    autocmd!
+    autocmd FileType tex setlocal spell
+    autocmd FileType tex set fo=cqj
+    autocmd FileType tex set tw=115
+augroup END
+
 
 
 "
@@ -99,10 +119,12 @@ let g:pandoc#syntax#conceal#use = 0
 " Neomake settings
 let g:neomake_python_enabled_makers = ['flake8']
 let g:neomake_pandoc_enabled_makers = ['college']
+let g:neomake_tex_enabled_makers = ['chktex', 'make']
 augroup initvim_neomake
     autocmd!
     autocmd FileType python call neomake#configure#automake('nw', 750)
     autocmd FileType pandoc call neomake#configure#automake('w')
+    autocmd FileType tex call neomake#configure#automake('w')
     autocmd User NeomakeFinished nested echom 'Neomake finished'
 augroup END
 
@@ -162,6 +184,13 @@ inoremap <S-Tab> <C-V><Tab>
 nnoremap k gk
 nnoremap j gj
 
+" EasyAlign maps
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
 " Denite maps
 nnoremap <Leader>dc :Denite colorscheme<CR>
 nnoremap <Leader>db :Denite buffer<CR>
@@ -205,13 +234,6 @@ command! ClearLocList lexpr []
 " Autocommands
 " ?autocmd
 "
-augroup initvim
-    autocmd!
-    autocmd InsertLeave * pclose
-    autocmd FileType markdown setlocal spell
-    autocmd FileType markdown setlocal nolist
-augroup END
-
 
 "
 " Vim plugin block configs
@@ -243,11 +265,17 @@ let g:sandwich#recipes += [
 \]
 
 " Neomake makers
-let g:neomake_pandoc_college_maker = {
+let g:neomake_pandoc_md_maker = {
 \   'exe': 'make',
 \   'args': ['%:t:r.pdf'],
 \   'append_file': 0
 \}
+let g:neomake_tex_xelatex_maker = {
+\   'exe': 'xelatex',
+\   'args': ['-shell-escape', '-file-line-error', '-interaction', 'nonstopmode'],
+\   'errorformat': '%E%f:%l: %m'
+\}
+let g:neomake_tex_make_maker = { 'args': ['%:t:r.pdf'], 'append_file': 0}
 
 "
 " Source a machine local config file, which is in the .gitignore

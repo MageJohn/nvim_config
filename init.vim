@@ -120,7 +120,7 @@ let g:pandoc#syntax#conceal#use = 0
 
 " Neomake settings
 let g:neomake_python_enabled_makers = ['flake8']
-let g:neomake_pandoc_enabled_makers = ['college']
+let g:neomake_pandoc_enabled_makers = ['md']
 let g:neomake_tex_enabled_makers = ['chktex', 'make']
 augroup initvim_neomake
     autocmd!
@@ -277,8 +277,11 @@ let g:neomake_tex_xelatex_maker = {
 \   'args': ['-shell-escape', '-file-line-error', '-interaction', 'nonstopmode'],
 \   'errorformat': '%E%f:%l: %m'
 \}
-let g:neomake_tex_make_maker = { 'args': ['%:t:r.pdf'], 'append_file': 0}
-
+let g:neomake_tex_make_maker = {
+            \'args': ['%:t:r.pdf'],
+            \'append_file': 0,
+            \'errorformat': '%E%f:%l: %m'
+\}
 "
 " Source a machine local config file, which is in the .gitignore
 "

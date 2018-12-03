@@ -32,6 +32,8 @@ Plug 'tpope/vim-capslock'
 Plug 'mhinz/vim-startify'
 Plug 'othree/html5.vim'
 Plug 'junegunn/vim-easy-align'
+Plug 'lluchs/vim-wren'
+Plug 'enricobacis/vim-airline-clock'
 
 call plug#end()
 
@@ -118,6 +120,8 @@ let g:pandoc#syntax#conceal#use = 0
 
 " Neomake settings
 let g:neomake_python_enabled_makers = ['flake8']
+let g:neomake_pandoc_enabled_makers = ['md']
+let g:neomake_tex_enabled_makers = ['chktex', 'make']
 augroup initvim_neomake
     autocmd!
     autocmd FileType python call neomake#configure#automake('nw', 750)
@@ -216,6 +220,10 @@ nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
+" Cite from Zotero
+noremap <leader>z "=ZoteroCite()<CR>p
+inoremap <C-z> <C-r>=ZoteroCite()<CR>
+
 " Unmap the s command. It's pretty useless anyway, and it conflicts with
 " vim-sandwich
 "nmap s <Nop>
@@ -227,6 +235,13 @@ nnoremap <A-l> <C-w>l
 "
 command! ClearLocList lexpr []
 
+function! ZoteroCite()
+  " pick a format based on the filetype (customize at will)
+  let format = &filetype =~ '.*tex' ? 'citep' : 'pandoc'
+  let api_call = 'http://localhost:23119/better-bibtex/cayw?format='.format.'&brackets=1'
+  let ref = system('curl -s '.shellescape(api_call))
+  return ref
+endfunction
 
 "
 " Autocommands
@@ -273,8 +288,11 @@ let g:neomake_tex_xelatex_maker = {
 \   'args': ['-shell-escape', '-file-line-error', '-interaction', 'nonstopmode'],
 \   'errorformat': '%E%f:%l: %m'
 \}
-let g:neomake_tex_make_maker = { 'args': ['%:t:r.pdf'], 'append_file': 0}
-
+let g:neomake_tex_make_maker = {
+            \'args': ['%:t:r.pdf'],
+            \'append_file': 0,
+            \'errorformat': '%E%f:%l: %m'
+\}
 "
 " Source a machine local config file, which is in the .gitignore
 "

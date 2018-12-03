@@ -220,6 +220,10 @@ nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
+" Cite from Zotero
+noremap <leader>z "=ZoteroCite()<CR>p
+inoremap <C-z> <C-r>=ZoteroCite()<CR>
+
 " Unmap the s command. It's pretty useless anyway, and it conflicts with
 " vim-sandwich
 "nmap s <Nop>
@@ -231,6 +235,13 @@ nnoremap <A-l> <C-w>l
 "
 command! ClearLocList lexpr []
 
+function! ZoteroCite()
+  " pick a format based on the filetype (customize at will)
+  let format = &filetype =~ '.*tex' ? 'citep' : 'pandoc'
+  let api_call = 'http://localhost:23119/better-bibtex/cayw?format='.format.'&brackets=1'
+  let ref = system('curl -s '.shellescape(api_call))
+  return ref
+endfunction
 
 "
 " Autocommands

@@ -118,8 +118,6 @@ let g:pandoc#syntax#conceal#use = 0
 
 " Neomake settings
 let g:neomake_python_enabled_makers = ['flake8']
-let g:neomake_pandoc_enabled_makers = ['college']
-let g:neomake_tex_enabled_makers = ['chktex', 'make']
 augroup initvim_neomake
     autocmd!
     autocmd FileType python call neomake#configure#automake('nw', 750)

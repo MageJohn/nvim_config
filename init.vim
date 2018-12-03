@@ -32,6 +32,8 @@ Plug 'tpope/vim-capslock'
 Plug 'mhinz/vim-startify'
 Plug 'othree/html5.vim'
 Plug 'junegunn/vim-easy-align'
+Plug 'lluchs/vim-wren'
+Plug 'enricobacis/vim-airline-clock'
 
 call plug#end()
 

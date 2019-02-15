@@ -84,6 +84,10 @@ set mouse=a
 set undofile
 set undodir=~/.config/nvim/undo/
 
+" Don't show mode (airline does this)
+set noshowmode
+
+
 " Autocommands
 " -> General
 augroup initvim_general
@@ -120,7 +124,6 @@ let g:deoplete#enable_at_startup = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#whitespace#enabled = 0
-set noshowmode
 
 " vim-pandoc settings
 let g:pandoc#modules#disabled = ["folding"]

@@ -49,6 +49,10 @@ let $TERM = "vte"
 " Buffers
 set hidden
 
+" Splitting
+set splitbelow
+set splitright
+
 " Wrapping options
 set wrap
 set linebreak

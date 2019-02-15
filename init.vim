@@ -310,6 +310,14 @@ let g:neomake_tex_make_maker = {
             \'append_file': 0,
             \'errorformat': '%E%f:%l: %m'
 \}
+
+let g:neomake_python_pyrun_maker = {
+        \ 'exe': 'python',
+        \ 'errorformat': '%E%f:%l:%c: %m',
+        \ 'serialize': 1,
+        \ 'serialize_abort_on_error': 1,
+        \ 'output_stream': 'stdout',
+        \ }
 "
 " Source a machine local config file, which is in the .gitignore
 "

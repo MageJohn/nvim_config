@@ -35,6 +35,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'lluchs/vim-wren'
 Plug 'enricobacis/vim-airline-clock'
 Plug 'easymotion/vim-easymotion'
+Plug 'haya14busa/is.vim'
 
 call plug#end()
 
@@ -56,6 +57,8 @@ set linebreak
 set ignorecase
 set smartcase
 set hlsearch
+set incsearch
+set inccommand="nosplit"
 
 " Set vim to show whitespace
 set lcs=tab:>-,space:.,eol:§
@@ -161,15 +164,6 @@ colorscheme base16-phd
 "
 
 let mapleader  = ";"
-
-" Stop the highlighting from the last search
-nnoremap <Leader>h :noh<CR>
-
-" Start editing my vi config in a new buffer
-nnoremap <Leader>ec :e $MYVIMRC<CR>
-
-" Save and source the current file (for editing a vi config)
-nnoremap <Leader>ws :w <bar> so %<CR>
 
 " Open the undo tree
 nnoremap <Leader>u :UndotreeToggle<CR>

@@ -34,6 +34,7 @@ Plug 'othree/html5.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'lluchs/vim-wren'
 Plug 'enricobacis/vim-airline-clock'
+Plug 'easymotion/vim-easymotion'
 
 call plug#end()
 
@@ -223,6 +224,9 @@ nnoremap <A-l> <C-w>l
 " Cite from Zotero
 noremap <leader>z "=ZoteroCite()<CR>p
 inoremap <C-z> <C-r>=ZoteroCite()<CR>
+
+" Easymotion
+map <Leader> <Plug>(easymotion-prefix)
 
 " Unmap the s command. It's pretty useless anyway, and it conflicts with
 " vim-sandwich

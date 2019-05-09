@@ -181,9 +181,11 @@ let g:startify_custom_header = [
 "
 
 function! s:base16_customize() abort
-    call Base16hi("NonText", g:base16_gui01, "", g:base16_cterm01, "", "", "")
-    call Base16hi("Whitespace", g:base16_gui01, "", g:base16_cterm01, "", "", "")
-    "hi Normal ctermbg=NONE
+    if exists("g:base16_gui01")
+        call Base16hi("NonText", g:base16_gui01, "", g:base16_cterm01, "", "", "")
+        call Base16hi("Whitespace", g:base16_gui01, "", g:base16_cterm01, "", "", "")
+        "hi Normal ctermbg=NONE
+    endif
 endfunction
 
 augroup on_change_colorscheme
@@ -191,8 +193,7 @@ augroup on_change_colorscheme
     autocmd ColorScheme * call s:base16_customize()
 augroup END
 
-let base16colorspace = 256
-colorscheme base16-phd
+colorscheme default
 
 
 "

@@ -94,12 +94,23 @@ augroup initvim_general
     autocmd!
     autocmd InsertLeave * pclose
 augroup END
+
 " -> FileType settings
 "    -> markdown
 augroup initvim_md
     autocmd!
     autocmd FileType markdown setlocal spell
     autocmd FileType markdown setlocal nolist
+    autocmd FileType markdown setlocal textwidth=79
+    autocmd FileType markdown setlocal formatoptions+=t
+    autocmd FileType markdown setlocal formatoptions+=a
+    autocmd FileType markdown setlocal formatoptions-=l
+    autocmd FileType pandoc setlocal spell
+    autocmd FileType pandoc setlocal nolist
+    autocmd FileType pandoc setlocal textwidth=79
+    autocmd FileType pandoc setlocal formatoptions+=t
+    autocmd FileType pandoc setlocal formatoptions+=a
+    autocmd FileType pandoc setlocal formatoptions-=l
 augroup END
 "    -> tex
 augroup initvim_tex
@@ -107,6 +118,13 @@ augroup initvim_tex
     autocmd FileType tex setlocal spell
     autocmd FileType tex set fo=cqj
     autocmd FileType tex set tw=115
+augroup END
+
+" -> Non-default extensions
+augroup initvim_extensions
+    autocmd!
+    autocmd BufNewFile,BufRead *.xresources set syntax=xdefaults
+    autocmd BufNewFile,BufRead *.Xresources set syntax=xdefaults
 augroup END
 
 

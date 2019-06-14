@@ -35,6 +35,8 @@ Plug 'junegunn/vim-easy-align'
 Plug 'lluchs/vim-wren'
 Plug 'enricobacis/vim-airline-clock'
 Plug 'cespare/vim-toml'
+Plug 'easymotion/vim-easymotion'
+Plug 'haya14busa/is.vim'
 
 call plug#end()
 
@@ -48,6 +50,10 @@ let $TERM = "vte"
 " Buffers
 set hidden
 
+" Splitting
+set splitbelow
+set splitright
+
 " Wrapping options
 set wrap
 set linebreak
@@ -56,6 +62,8 @@ set linebreak
 set ignorecase
 set smartcase
 set hlsearch
+set incsearch
+set inccommand="nosplit"
 
 " Set vim to show whitespace
 set lcs=tab:>-,space:.,eol:§
@@ -77,18 +85,33 @@ set mouse=a
 set undofile
 set undodir=~/.config/nvim/undo/
 
+" Don't show mode (airline does this)
+set noshowmode
+
+
 " Autocommands
 " -> General
 augroup initvim_general
     autocmd!
     autocmd InsertLeave * pclose
 augroup END
+
 " -> FileType settings
 "    -> markdown
 augroup initvim_md
     autocmd!
     autocmd FileType markdown setlocal spell
     autocmd FileType markdown setlocal nolist
+    autocmd FileType markdown setlocal textwidth=79
+    autocmd FileType markdown setlocal formatoptions+=t
+    autocmd FileType markdown setlocal formatoptions+=a
+    autocmd FileType markdown setlocal formatoptions-=l
+    autocmd FileType pandoc setlocal spell
+    autocmd FileType pandoc setlocal nolist
+    autocmd FileType pandoc setlocal textwidth=79
+    autocmd FileType pandoc setlocal formatoptions+=t
+    autocmd FileType pandoc setlocal formatoptions+=a
+    autocmd FileType pandoc setlocal formatoptions-=l
 augroup END
 "    -> tex
 augroup initvim_tex
@@ -96,6 +119,13 @@ augroup initvim_tex
     autocmd FileType tex setlocal spell
     autocmd FileType tex set fo=cqj
     autocmd FileType tex set tw=115
+augroup END
+
+" -> Non-default extensions
+augroup initvim_extensions
+    autocmd!
+    autocmd BufNewFile,BufRead *.xresources set syntax=xdefaults
+    autocmd BufNewFile,BufRead *.Xresources set syntax=xdefaults
 augroup END
 
 
@@ -113,7 +143,6 @@ let g:deoplete#enable_at_startup = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#whitespace#enabled = 0
-set noshowmode
 
 " vim-pandoc settings
 let g:pandoc#modules#disabled = ["folding"]
@@ -139,6 +168,16 @@ let g:textobj_sandwich_no_default_key_mappings = 1 " redefined in Maps
 " Startify settings
 let g:startify_session_persistence = 1
 let g:startify_session_dir = '~/.local/share/nvim/session'
+let g:startify_custom_header = [
+    \ '     /\   |\                             _           ',
+    \ '    /  \  | \                           (_)          ',
+    \ '   | \  \ |  |     _ __   ___  _____   ___ _ __ ___  ',
+    \ '   |  \  \|  |    | ''_ \ / _ \/ _ \ \ / / | ''_ ` _ \ ',
+    \ '   |  |\  \  |    | | | |  __/ (_) \ V /| | | | | | |',
+    \ '   |  | \  \ |    |_| |_|\___|\___/ \_/ |_|_| |_| |_|',
+    \ '    \ |  \  /                                        ',
+    \ '     \|   \/                                         ',
+    \ ]
 
 
 "
@@ -147,18 +186,19 @@ let g:startify_session_dir = '~/.local/share/nvim/session'
 "
 
 function! s:base16_customize() abort
-    call Base16hi("NonText", g:base16_gui01, "", g:base16_cterm01, "", "", "")
-    call Base16hi("Whitespace", g:base16_gui01, "", g:base16_cterm01, "", "", "")
-    "hi Normal ctermbg=NONE
+    if exists("g:base16_gui01")
+        call Base16hi("NonText", g:base16_gui01, "", g:base16_cterm01, "", "", "")
+        call Base16hi("Whitespace", g:base16_gui01, "", g:base16_cterm01, "", "", "")
+        "hi Normal ctermbg=NONE
+    endif
 endfunction
 
-augroup on_change_colorschema
+augroup on_change_colorscheme
     autocmd!
     autocmd ColorScheme * call s:base16_customize()
 augroup END
 
-let base16colorspace = 256
-colorscheme base16-phd
+colorscheme default
 
 
 "
@@ -167,15 +207,6 @@ colorscheme base16-phd
 "
 
 let mapleader  = ";"
-
-" Stop the highlighting from the last search
-nnoremap <Leader>h :noh<CR>
-
-" Start editing my vi config in a new buffer
-nnoremap <Leader>ec :e $MYVIMRC<CR>
-
-" Save and source the current file (for editing a vi config)
-nnoremap <Leader>ws :w <bar> so %<CR>
 
 " Open the undo tree
 nnoremap <Leader>u :UndotreeToggle<CR>
@@ -230,6 +261,9 @@ nnoremap <A-l> <C-w>l
 " Cite from Zotero
 noremap <leader>z "=ZoteroCite()<CR>p
 inoremap <C-z> <C-r>=ZoteroCite()<CR>
+
+" Easymotion
+map <Leader> <Plug>(easymotion-prefix)
 
 " Unmap the s command. It's pretty useless anyway, and it conflicts with
 " vim-sandwich
@@ -300,6 +334,14 @@ let g:neomake_tex_make_maker = {
             \'append_file': 0,
             \'errorformat': '%E%f:%l: %m'
 \}
+
+let g:neomake_python_pyrun_maker = {
+        \ 'exe': 'python',
+        \ 'errorformat': '%E%f:%l:%c: %m',
+        \ 'serialize': 1,
+        \ 'serialize_abort_on_error': 1,
+        \ 'output_stream': 'stdout',
+        \ }
 "
 " Source a machine local config file, which is in the .gitignore
 "

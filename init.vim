@@ -34,6 +34,7 @@ Plug 'othree/html5.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'lluchs/vim-wren'
 Plug 'enricobacis/vim-airline-clock'
+Plug 'cespare/vim-toml'
 
 call plug#end()
 
@@ -122,9 +123,11 @@ let g:pandoc#syntax#conceal#use = 0
 let g:neomake_python_enabled_makers = ['flake8']
 let g:neomake_pandoc_enabled_makers = ['md']
 let g:neomake_tex_enabled_makers = ['chktex', 'make']
+let g:neomake_rust_enabled_makers = ['cargo']
 augroup initvim_neomake
     autocmd!
     autocmd FileType python call neomake#configure#automake('nw', 750)
+    autocmd FileType rust call neomake#configure#automake('nw', 750)
     autocmd FileType pandoc call neomake#configure#automake('w')
     autocmd FileType tex call neomake#configure#automake('w')
     autocmd User NeomakeFinished nested echom 'Neomake finished'
@@ -132,6 +135,10 @@ augroup END
 
 " vim-sandwich settings
 let g:textobj_sandwich_no_default_key_mappings = 1 " redefined in Maps
+
+" Startify settings
+let g:startify_session_persistence = 1
+let g:startify_session_dir = '~/.local/share/nvim/session'
 
 
 "

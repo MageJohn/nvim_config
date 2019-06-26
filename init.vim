@@ -37,6 +37,8 @@ Plug 'enricobacis/vim-airline-clock'
 Plug 'cespare/vim-toml'
 Plug 'easymotion/vim-easymotion'
 Plug 'haya14busa/is.vim'
+Plug 'python/black'
+Plug 'jiangmiao/auto-pairs'
 
 call plug#end()
 
@@ -44,6 +46,8 @@ call plug#end()
 " Built in vim options
 " ?sets
 " 
+
+let g:python3_host_prog = '/usr/bin/python3.7'
 
 let $TERM = "vte"
 
@@ -178,6 +182,9 @@ let g:startify_custom_header = [
     \ '    \ |  \  /                                        ',
     \ '     \|   \/                                         ',
     \ ]
+
+" Black
+let g:black_virtualenv = '/home/yuri/.local/share/nvim/black'
 
 
 "

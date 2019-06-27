@@ -39,6 +39,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'haya14busa/is.vim'
 Plug 'python/black'
 Plug 'jiangmiao/auto-pairs'
+Plug 'vim-scripts/BufOnly.vim'
 
 call plug#end()
 

@@ -68,6 +68,9 @@ function packagedefs#init()
   Pac 'lluchs/vim-wren'
   Pac 'cespare/vim-toml'
 
+  " VCS integration
+  Pac 'mhinz/vim-signify'
+
   Pac 'tpope/vim-scriptease'
 
   delcommand Pac

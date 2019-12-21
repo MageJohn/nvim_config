@@ -16,7 +16,7 @@ function packagedefs#init()
     \ 'do': 'bash install.sh',
     \ }
   "   -> Completion
-  Pac 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePacins' }
+  Pac 'Shougo/deoplete.nvim' 
   Pac 'ervandew/supertab'
   Pac 'Shougo/echodoc.vim'
   " Appearance

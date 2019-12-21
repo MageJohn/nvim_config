@@ -61,6 +61,7 @@ function packagedefs#init()
   Pac 'mhinz/vim-startify'
   "   Close all buffers except one (defaults to current)
   Pac 'vim-scripts/BufOnly.vim'
+  Pac 'arithran/vim-delete-hidden-buffers'
   "   File manager
   Pac 'scrooloose/nerdtree'
   "   Repeat many plugin operations

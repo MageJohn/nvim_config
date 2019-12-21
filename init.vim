@@ -1,84 +1,3 @@
-" >> Plugins (vim-plug) >>>
-
-call plug#begin(stdpath("config")."/plugged")
-
-"Plug stdpath('config').'/plugged-static/vim-plugup'
-"Plug stdpath('config').'/plugged-static/vim-xpand'
-Plug 'junegunn/fzf', {
-      \ 'dir': '~/.fzf', 
-      \ 'do': './install --all',
-      \ 'on': 'FZF'
-      \}
-
-" Code intelligence
-"   -> Language server protocl
-Plug 'autozimu/LanguageClient-neovim', {
-  \ 'branch': 'next',
-  \ 'do': 'bash install.sh',
-  \ }
-"   -> Completion
-Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins' }
-"Plug 'zchee/deoplete-jedi'
-Plug 'ervandew/supertab'
-Plug 'Shougo/echodoc.vim'
-"   -> Linting
-"Plug 'neomake/neomake'
-"Plug 'psf/black'
-" Appearance
-"Plug 'chriskempson/base16-vim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'enricobacis/vim-airline-clock'
-
-" Textobjects
-Plug 'machakann/vim-sandwich'
-Plug 'wellle/targets.vim'
-Plug 'kana/vim-textobj-user'
-Plug 'kana/vim-textobj-entire'
-Plug 'kana/vim-textobj-line'
-Plug 'somini/vim-textobj-fold'
-
-Plug 'junegunn/vim-easy-align'
-Plug 'Raimondi/delimitMate'
-Plug 'tpope/vim-capslock'
-Plug 'svermeulen/vim-subversive'
-"   Text/Markdown
-Plug 'dhruvasagar/vim-table-mode'
-"   Python
-Plug 'fisadev/vim-isort'
-" Navigation
-"   Jump multiple motions with a displayed key
-Plug 'easymotion/vim-easymotion'
-"   Search improvements
-Plug 'haya14busa/is.vim' " Keep above cutlass
-Plug 'tpope/vim-abolish'
-"   * motion improvements
-Plug 'haya14busa/vim-asterisk'
-"   Jump to matching groups with %
-Plug 'adelarsq/vim-matchit'
-Plug 'tpope/vim-unimpaired'
-" Keep below is.vim
-" Cutlass sets an smap. If this is found by is.vim it doesn't set it's default
-" n or N mpas
-Plug 'svermeulen/vim-cutlass'
-Plug 'svermeulen/vim-yoink'
-"   Visualise undos in a tree
-Plug 'mbbill/undotree'
-"   Nice start screen and session management
-Plug 'mhinz/vim-startify'
-"   Close all buffers except one (defaults to current)
-Plug 'vim-scripts/BufOnly.vim'
-"   File manager
-Plug 'scrooloose/nerdtree'
-"   Repeat many plugin operations
-Plug 'tpope/vim-repeat'
-" File types
-Plug 'lluchs/vim-wren'
-Plug 'cespare/vim-toml'
-
-call plug#end()
-" <<<
-
 " >> Vim/Neovim settings >>>
 
 " Buffers
@@ -388,6 +307,7 @@ map *  <Plug>(asterisk-z*)<Plug>(is-nohl-1)
 map #  <Plug>(asterisk-z#)<Plug>(is-nohl-1)
 map g* <Plug>(asterisk-zg*)<Plug>(is-nohl-1)
 map g# <Plug>(asterisk-zg#)<Plug>(is-nohl-1)
+
 "   <<<
 
 "   >> plugup settings >>>
@@ -500,6 +420,7 @@ nmap <leader>S <plug>(SubversiveSubvertWordRange)
 "   <<<
 
 "   >> sandwich.vim settings >>>
+packadd! vim-sandwich
 let g:textobj_sandwich_no_default_key_mappings = v:true
 let g:sandwich_no_default_key_mappings = v:true
 

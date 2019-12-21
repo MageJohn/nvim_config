@@ -1,6 +1,8 @@
-call GuiWindowMaximized(1)
-Guifont Source Code Pro:h9
-let base16colorspace = 256
-colorscheme base16-phd
+if exists("g:GuiLoaded")
+    " A gui using nvim-qt's nvim-gui-shim is loaded
+    call GuiWindowMaximized(1)
+    GuiTabline 0
+endif
+set guifont=Source\ Code\ Pro:h11
 
-runtime ginit.local.vim
+execute "source" stdpath("config") .. "/ginit.local.vim"

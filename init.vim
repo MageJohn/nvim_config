@@ -471,6 +471,10 @@ xmap <silent> ii <Plug>(textobj-line-i)
 xmap <silent> ai <Plug>(textobj-line-a)
 "   <<<
 
+"   >> bbye >>>
+nmap <Leader>q <Cmd>Bwipeout<CR>
+"   <<<
+
 " <<<
 
 " >> Colorscheme settings >>>

@@ -52,9 +52,6 @@ function packagedefs#init()
   "   Jump to matching groups with %
   Pac 'adelarsq/vim-matchit'
   Pac 'tpope/vim-unimpaired'
-  " Keep below is.vim
-  " Cutlass sets an smap. If this is found by is.vim it doesn't set it's default
-  " n or N mpas
   Pac 'svermeulen/vim-cutlass'
   Pac 'svermeulen/vim-yoink'
   "   Visualise undos in a tree

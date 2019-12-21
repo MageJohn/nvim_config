@@ -20,7 +20,8 @@ function packagedefs#init()
   Pac 'ervandew/supertab'
   Pac 'Shougo/echodoc.vim'
   " Appearance
-  Pac 'MageJohn/base16-vim'
+  "                           :colorscheme can find opt plugins
+  Pac 'MageJohn/base16-vim', {'type': 'opt'}
   Pac 'vim-airline/vim-airline'
   Pac 'vim-airline/vim-airline-themes'
   Pac 'enricobacis/vim-airline-clock'

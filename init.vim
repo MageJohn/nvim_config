@@ -1,56 +1,85 @@
-"
-" Be iMproved
-"
+" >> Plugins (vim-plug) >>>
 
-if &compatible
-    set nocompatible
-endif
+call plug#begin(stdpath("config")."/plugged")
 
+"Plug stdpath('config').'/plugged-static/vim-plugup'
+"Plug stdpath('config').'/plugged-static/vim-xpand'
+Plug 'junegunn/fzf', {
+      \ 'dir': '~/.fzf', 
+      \ 'do': './install --all',
+      \ 'on': 'FZF'
+      \}
 
-"
-" Plugins (vim-plug)
-" ?plug
-"
-
-call plug#begin('~/.config/nvim/plugged')
-
-Plug 'chriskempson/base16-vim'
+" Code intelligence
+"   -> Language server protocl
+Plug 'autozimu/LanguageClient-neovim', {
+  \ 'branch': 'next',
+  \ 'do': 'bash install.sh',
+  \ }
+"   -> Completion
 Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-jedi'
+"Plug 'zchee/deoplete-jedi'
 Plug 'ervandew/supertab'
-Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
-Plug 'terryma/vim-multiple-cursors'
-Plug 'dhruvasagar/vim-table-mode'
-Plug 'vim-pandoc/vim-pandoc'
-Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'Shougo/echodoc.vim'
+"   -> Linting
+"Plug 'neomake/neomake'
+"Plug 'psf/black'
+" Appearance
+"Plug 'chriskempson/base16-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'neomake/neomake'
-Plug 'machakann/vim-sandwich'
-Plug 'Shougo/denite.nvim', {'do': ':UpdateRemotePlugins' }
-Plug 'tpope/vim-capslock'
-Plug 'mhinz/vim-startify'
-Plug 'othree/html5.vim'
-Plug 'junegunn/vim-easy-align'
-Plug 'lluchs/vim-wren'
 Plug 'enricobacis/vim-airline-clock'
-Plug 'cespare/vim-toml'
+
+" Textobjects
+Plug 'machakann/vim-sandwich'
+Plug 'wellle/targets.vim'
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-entire'
+Plug 'kana/vim-textobj-line'
+Plug 'somini/vim-textobj-fold'
+
+Plug 'junegunn/vim-easy-align'
+Plug 'Raimondi/delimitMate'
+Plug 'tpope/vim-capslock'
+Plug 'svermeulen/vim-subversive'
+"   Text/Markdown
+Plug 'dhruvasagar/vim-table-mode'
+"   Python
+Plug 'fisadev/vim-isort'
+" Navigation
+"   Jump multiple motions with a displayed key
 Plug 'easymotion/vim-easymotion'
-Plug 'haya14busa/is.vim'
-Plug 'python/black'
-Plug 'jiangmiao/auto-pairs'
+"   Search improvements
+Plug 'haya14busa/is.vim' " Keep above cutlass
+Plug 'tpope/vim-abolish'
+"   * motion improvements
+Plug 'haya14busa/vim-asterisk'
+"   Jump to matching groups with %
+Plug 'adelarsq/vim-matchit'
+Plug 'tpope/vim-unimpaired'
+" Keep below is.vim
+" Cutlass sets an smap. If this is found by is.vim it doesn't set it's default
+" n or N mpas
+Plug 'svermeulen/vim-cutlass'
+Plug 'svermeulen/vim-yoink'
+"   Visualise undos in a tree
+Plug 'mbbill/undotree'
+"   Nice start screen and session management
+Plug 'mhinz/vim-startify'
+"   Close all buffers except one (defaults to current)
 Plug 'vim-scripts/BufOnly.vim'
+"   File manager
+Plug 'scrooloose/nerdtree'
+"   Repeat many plugin operations
+Plug 'tpope/vim-repeat'
+" File types
+Plug 'lluchs/vim-wren'
+Plug 'cespare/vim-toml'
 
 call plug#end()
+" <<<
 
-"
-" Built in vim options
-" ?sets
-" 
-
-let g:python3_host_prog = '/usr/bin/python3.7'
-
-let $TERM = "vte"
+" >> Vim/Neovim settings >>>
 
 " Buffers
 set hidden
@@ -66,12 +95,15 @@ set linebreak
 " Search settings
 set ignorecase
 set smartcase
-set hlsearch
+    " adding nohls prevents previous searches being highlighted when the
+    " config is reloaded
+set hlsearch | nohls
 set incsearch
 set inccommand="nosplit"
 
 " Set vim to show whitespace
-set lcs=tab:>-,space:.,eol:§
+set lcs=tab:>-,space:.,eol:§,extends:…,precedes:…,nbsp:+
+
 set list
 
 " Indentation settings
@@ -79,182 +111,98 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
-" Show relative numbers in the gutter, and absolute number at cursor
+" Gutter settings
 set number
 set relativenumber
+set signcolumn=yes
 
 " Enable mouse
 set mouse=a
 
+" Let block select go where there are no characters
+set virtualedit=block
+
+" Have ~ work as an operator
+set tildeop
+
 " Save the undo history between sessions
 set undofile
-set undodir=~/.config/nvim/undo/
+let &undodir = stdpath("data").."/undo"
 
-" Don't show mode (airline does this)
-set noshowmode
+let g:python3_host_prog = "/usr/bin/python3.7"
+
+let $TERM = "vte"
+if has('nvim')
+    let $GIT_EDITOR = 'nvr -cc vsplit --remote-wait'
+endif
+
+" <<<
+
+" >> Autocommands >>>
+
+augroup initvim
+
+"   >> General >>>
+  autocmd InsertLeave * pclose
+"   <<<
 
 
-" Autocommands
-" -> General
-augroup initvim_general
-    autocmd!
-    autocmd InsertLeave * pclose
+"   >> FileType settings >>>
+
+"     >> markdown >>>
+  autocmd FileType markdown setlocal spell
+  autocmd FileType markdown setlocal nolist
+  autocmd FileType markdown setlocal textwidth=79
+  autocmd FileType markdown setlocal formatoptions+=t
+  autocmd FileType markdown setlocal formatoptions+=a
+  autocmd FileType markdown setlocal formatoptions-=l
+"     <<<
+
+"     >> tex >>>
+  autocmd FileType tex setlocal spell
+  autocmd FileType tex set fo=cqj
+  autocmd FileType tex set tw=115
+"     <<<
+
+"     >> git >>>
+"     When a buffer is opened by a git command using e.g. nvr, close it
+"     automatically when it's hidden; this means :q or :wq can be used to
+"     close, rather than :bd.
+  autocmd FileType gitcommit,gitrebase,gitconfig set bufhidden=delete
+"     <<<
+
+"     >> vim >>>
+" <Tab> indents two spaces, but an actual tab is 8 (for identification)
+  autocmd FileType vim setlocal tabstop=8 shiftwidth=2 expandtab
+"     <<<
+
+"     >> pyton >>>
+
+"     <<<
+"   <<<
+
+"   >> Non-default extensions >>>
+  autocmd BufNewFile,BufRead *.xresources set syntax=xdefaults
+  autocmd BufNewFile,BufRead *.Xresources set syntax=xdefaults
+"   <<<
+
 augroup END
+" <<<
 
-" -> FileType settings
-"    -> markdown
-augroup initvim_md
-    autocmd!
-    autocmd FileType markdown setlocal spell
-    autocmd FileType markdown setlocal nolist
-    autocmd FileType markdown setlocal textwidth=79
-    autocmd FileType markdown setlocal formatoptions+=t
-    autocmd FileType markdown setlocal formatoptions+=a
-    autocmd FileType markdown setlocal formatoptions-=l
-    autocmd FileType pandoc setlocal spell
-    autocmd FileType pandoc setlocal nolist
-    autocmd FileType pandoc setlocal textwidth=79
-    autocmd FileType pandoc setlocal formatoptions+=t
-    autocmd FileType pandoc setlocal formatoptions+=a
-    autocmd FileType pandoc setlocal formatoptions-=l
-augroup END
-"    -> tex
-augroup initvim_tex
-    autocmd!
-    autocmd FileType tex setlocal spell
-    autocmd FileType tex set fo=cqj
-    autocmd FileType tex set tw=115
-augroup END
+" >> Maps >>>
 
-" -> Non-default extensions
-augroup initvim_extensions
-    autocmd!
-    autocmd BufNewFile,BufRead *.xresources set syntax=xdefaults
-    autocmd BufNewFile,BufRead *.Xresources set syntax=xdefaults
-augroup END
-
-
-
-"
-" Plugin settings
-" ?lets
-"
-
-" Tab completion settings
-let g:SuperTabDefaultCompletionType = "<c-n>"
-let g:deoplete#enable_at_startup = 1
-
-" vim-airline settings
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#whitespace#enabled = 0
-
-" vim-pandoc settings
-let g:pandoc#modules#disabled = ["folding"]
-let g:pandoc#syntax#conceal#use = 0
-
-" Neomake settings
-let g:neomake_python_enabled_makers = ['flake8']
-let g:neomake_pandoc_enabled_makers = ['md']
-let g:neomake_tex_enabled_makers = ['chktex', 'make']
-let g:neomake_rust_enabled_makers = ['cargo']
-augroup initvim_neomake
-    autocmd!
-    autocmd FileType python call neomake#configure#automake('nw', 750)
-    autocmd FileType rust call neomake#configure#automake('nw', 750)
-    autocmd FileType pandoc call neomake#configure#automake('w')
-    autocmd FileType tex call neomake#configure#automake('w')
-    autocmd User NeomakeFinished nested echom 'Neomake finished'
-augroup END
-
-" vim-sandwich settings
-let g:textobj_sandwich_no_default_key_mappings = 1 " redefined in Maps
-
-" Startify settings
-let g:startify_session_persistence = 1
-let g:startify_session_dir = '~/.local/share/nvim/session'
-let g:startify_custom_header = [
-    \ '     /\   |\                             _           ',
-    \ '    /  \  | \                           (_)          ',
-    \ '   | \  \ |  |     _ __   ___  _____   ___ _ __ ___  ',
-    \ '   |  \  \|  |    | ''_ \ / _ \/ _ \ \ / / | ''_ ` _ \ ',
-    \ '   |  |\  \  |    | | | |  __/ (_) \ V /| | | | | | |',
-    \ '   |  | \  \ |    |_| |_|\___|\___/ \_/ |_|_| |_| |_|',
-    \ '    \ |  \  /                                        ',
-    \ '     \|   \/                                         ',
-    \ ]
-
-" Black
-let g:black_virtualenv = '/home/yuri/.local/share/nvim/black'
-
-
-"
-" Colorscheme settings
-" ?color
-"
-
-function! s:base16_customize() abort
-    if exists("g:base16_gui01")
-        call Base16hi("NonText", g:base16_gui01, "", g:base16_cterm01, "", "", "")
-        call Base16hi("Whitespace", g:base16_gui01, "", g:base16_cterm01, "", "", "")
-        "hi Normal ctermbg=NONE
-    endif
-endfunction
-
-augroup on_change_colorscheme
-    autocmd!
-    autocmd ColorScheme * call s:base16_customize()
-augroup END
-
-colorscheme default
-
-
-"
-" Maps
-" ?maps
-"
-
-let mapleader  = ";"
-
-" Open the undo tree
-nnoremap <Leader>u :UndotreeToggle<CR>
+let g:mapleader  = ";"
 
 " Open the location list
-nnoremap <Leader>l :lopen<CR>
+nnoremap <Leader>lo <Cmd>lopen<CR>
+nnoremap <Leader>lc <Cmd>lclose<CR>
 
 " Map Ctrl-^ to something more accesible
 nnoremap <Leader><Tab> <C-^>
 
-" Insert a literal tab in insert mode
-inoremap <S-Tab> <C-V><Tab>
-
 " Move up and down screen lines instead of buffer lines
 nnoremap k gk
 nnoremap j gj
-
-" EasyAlign maps
-
-" Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
-
-" Denite maps
-nnoremap <Leader>dc :Denite colorscheme<CR>
-nnoremap <Leader>db :Denite buffer<CR>
-nnoremap <Leader>dd :Denite directory_rec<CR>
-nnoremap <Leader>df :Denite file_rec <CR>
-
-" vim-sandwich mapping
-xmap ib <Plug>(textobj-sandwich-auto-i)
-omap ib <Plug>(textobj-sandwich-auto-i)
-xmap ab <Plug>(textobj-sandwich-auto-a)
-omap ab <Plug>(textobj-sandwich-auto-a)
-
-xmap iq <Plug>(textobj-sandwich-query-i)
-omap iq <Plug>(textobj-sandwich-query-i)
-xmap aq <Plug>(textobj-sandwich-query-a)
-omap aq <Plug>(textobj-sandwich-query-a)
 
 " Switch windows with Alt+(h,j,k,l), even in neovim's terminal
 tnoremap <A-h> <C-\><C-n><C-w>h
@@ -266,92 +214,380 @@ nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
-" Cite from Zotero
-noremap <leader>z "=ZoteroCite()<CR>p
-inoremap <C-z> <C-r>=ZoteroCite()<CR>
+" <<<
 
-" Easymotion
+" >> Plugin settings >>>
+
+"   >> Supertab settings >>>
+let g:SuperTabDefaultCompletionType = "<c-n>"
+let g:SuperTabLongestEnhanced = v:true
+
+augroup initvim_supertab
+  au!
+  au FileType vim let b:SuperTabNoCompleteAfter = ['"', '^', '\s']
+  au FileType python let b:SuperTabNoCompleteAfter = ['#', '^', '\s']
+augroup END
+
+"   <<<
+
+"   >> deoplete settings >>>
+let g:deoplete#enable_at_startup = v:true
+"   <<<
+
+"   >> vim-airline settings >>>
+" Don't show mode (airline does this)
+set noshowmode
+
+let g:airline_powerline_fonts = v:true
+let g:airline#extensions#tabline#enabled = v:true
+let g:airline#extensions#whitespace#enabled = v:false
+"   <<<
+
+"   >> vim-pandoc settings >>>
+let g:pandoc#modules#disabled = ["folding"]
+let g:pandoc#syntax#conceal#use = v:false
+augroup initvim_md
+  autocmd FileType pandoc setlocal spell
+  autocmd FileType pandoc setlocal nolist
+  autocmd FileType pandoc setlocal textwidth=79
+  autocmd FileType pandoc setlocal formatoptions+=t
+  autocmd FileType pandoc setlocal formatoptions+=a
+  autocmd FileType pandoc setlocal formatoptions-=l
+augroup END
+"   <<<
+
+"   >> "Neomake settings >>>
+"let g:neomake_python_enabled_makers = ['flake8']
+"let g:neomake_pandoc_enabled_makers = ['md']
+"let g:neomake_tex_enabled_makers = ['chktex', 'make']
+"let g:neomake_rust_enabled_makers = ['cargo']
+"
+"augroup initvim_neomake
+"  autocmd!
+"  autocmd FileType python,rust call neomake#configure#automake('nw', 750)
+"  autocmd FileType pandoc call neomake#configure#automake('w')
+"  autocmd FileType tex call neomake#configure#automake('w')
+"  autocmd User NeomakeFinished echom 'Neomake finished'
+"augroup END
+"
+""   >> Neomake custom makers >>>
+"let g:neomake_pandoc_md_maker = {
+"\   'exe': 'make',
+"\   'args': ['%:t:r.pdf'],
+"\   'append_file': 0
+"\}
+"let g:neomake_tex_xelatex_maker = {
+"\   'exe': 'xelatex',
+"\   'args': ['-shell-escape', '-file-line-error', '-interaction', 'nonstopmode'],
+"\   'errorformat': '%E%f:%l: %m'
+"\}
+"let g:neomake_tex_make_maker = {
+"      \'args': ['%:t:r.pdf'],
+"      \'append_file': 0,
+"      \'errorformat': '%E%f:%l: %m'
+"\}
+"
+"let g:neomake_python_pyrun_maker = {
+"    \ 'exe': 'python',
+"    \ 'errorformat': '%E%f:%l:%c: %m',
+"    \ 'serialize': 1,
+"    \ 'serialize_abort_on_error': 1,
+"    \ 'output_stream': 'stdout',
+"    \ }
+"
+"let g:neomake_python_mypy_args = [
+"      \ '--hide-error-context',
+"      \ '--show-column-numbers',
+"      \ '--show-error-code',
+"      \ '--no-pretty',
+"      \ '--no-color-output',
+"      \ '--no-error-summary',
+"      \ '--hide-absolute-path',
+"      \ '--disallow-incomplete-defs',
+"      \ '--namespace-packages',
+"      \]
+"let g:neomake_python_mypy2_maker = deepcopy(neomake#makers#ft#python#mypy())
+"let g:neomake_python_mypy2_maker.exe = 'mypy'
+"let g:neomake_python_mypy2_maker.args = g:neomake_python_mypy_args + ['--py2']
+""   <<<
+
+"   <<<
+
+"   >> Startify settings >>>
+let g:startify_session_persistence = v:true
+let g:startify_session_dir = '~/.local/share/nvim/session'
+let g:startify_custom_header = [
+  \ '   /\   |\               _       ',
+  \ '  /  \  | \               (_)      ',
+  \ '   | \  \ |  |   _ __   ___  _____   ___ _ __ ___  ',
+  \ '   |  \  \|  |  | ''_ \ / _ \/ _ \ \ / / | ''_ ` _ \ ',
+  \ '   |  |\  \  |  | | | |  __/ (_) \ V /| | | | | | |',
+  \ '   |  | \  \ |  |_| |_|\___|\___/ \_/ |_|_| |_| |_|',
+  \ '  \ |  \  /                    ',
+  \ '   \|   \/                     ',
+  \ ]
+"   <<<
+
+"   >> Black settings >>>
+"let g:black_virtualenv = 
+"   <<<
+
+"   >> EasyMotion settings >>>
+let g:EasyMotion_startofline = v:false  " Keep cursor column with JK motions
+
 map <Leader> <Plug>(easymotion-prefix)
+"   <<<
 
-" Unmap the s command. It's pretty useless anyway, and it conflicts with
-" vim-sandwich
-"nmap s <Nop>
-"xmap s <Nop>
+"   >> asterisk.vim settings >>>
+let g:asterisk#keeppos = v:true
+"   <<<
 
+"   >> delimitMate settings >>>
+let g:delimitMate_expand_cr = 2
+let g:delimitMate_expand_space = v:true
+let g:delimitMate_jump_expansion = v:true
+let g:delimitMate_balance_matchpairs = v:true
+let g:delimitMate_excluded_regions = "Comment"
+let g:delimitMate_insert_eol_marker = 0  " values: 0, 1, 2
+augroup initvim_delimitMate
+  au!
+  au FileType c let g:delimitMate_insert_eol_marker = 2
+  au FileType c let b:delimitMate_eol_marker = ";"
+  au FileType python let b:delimitMate_nesting_quotes = ['"', "'"]
 
-"
-" Custom commands
-"
+  " If one of these characters appears to the left of the cursor then
+  " autoclose quotes: = : ( { [ , . \
+  au FileType vim let b:delimitMate_smart_quotes = '!\%(=\|:\|(\|{\|[\|,\|\.\|\\\)\s*\%#'
+augroup END
+
+imap <C-l> <Plug>delimitMateS-Tab
+"   <<<
+
+"   >> undotree settings >>>
+" Open the undo tree
+nnoremap <Leader>u <Cmd>UndotreeToggle<CR>
+"   <<<
+
+"   >> EasyAlign settings >>>
+"   Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+"   Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+"   <<<
+
+"   >> NerdTree settings >>>
+nnoremap <Leader>f <Cmd>NERDTreeToggle<CR>
+
+" Change CWD when tree root changes, and when switching tabs
+let g:NERDTreeChDirMode = 3
+"   <<<
+
+"   >> is.vim and asterisk maps >>>
+map *  <Plug>(asterisk-z*)<Plug>(is-nohl-1)
+map #  <Plug>(asterisk-z#)<Plug>(is-nohl-1)
+map g* <Plug>(asterisk-zg*)<Plug>(is-nohl-1)
+map g# <Plug>(asterisk-zg#)<Plug>(is-nohl-1)
+"   <<<
+
+"   >> plugup settings >>>
+  let g:plugup#plug_git = stdpath("config") .. "/vim-plug"
+"   <<<
+
+"   >> fzf settings >>>
+if has('nvim') && !exists('g:fzf_layout')
+augroup initvim_fzf
+  autocmd  FileType fzf set laststatus=0 noshowmode noruler
+  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+endif
+"   <<<
+
+"   >> LanguageClient settings >>>
+let g:LanguageClient_serverCommands = {
+  \ 'python': ['/usr/local/bin/pyls']
+  \ }
+
+let g:LanguageClient_changeThrottle = 0.5
+let g:LanguageClient_diagnosticsList = "Location"
+
+function LC_maps()
+  if has_key(g:LanguageClient_serverCommands, &filetype)
+  nnoremap <silent> gd <Cmd>call LanguageClient#textDocument_definition()<CR>
+  nnoremap <silent> H <Cmd>call LanguageClient#textDocument_hover()<CR>
+  set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
+  endif
+endfunction
+
+autocmd FileType * call LC_maps()
+
+"   <<<
+
+"   >> echodoc settings >>>
+let g:echodoc#enable_at_startup = v:true
+let g:echodoc#type = "echo"
+"   <<<
+
+"   >> unimpaired >>>
+"   Disable some of the mappings
+"       yop/[op/[op because I'll never need paste mode
+"       yoh/]oh/[oh because is.vim means I don't need to care about 'hlsearch'
+let g:nremap = {
+    \ 'yop': '<skip>',
+    \ '[op': '<skip>',
+    \ ']op': '<skip>',
+    \ 'yoh': '<skip>',
+    \ '[oh': '<skip>',
+    \ ']oh': '<skip>',
+    \ ']y': '<skip>',
+    \ '[y': '<skip>',
+    \}
+" Cleanup some mappings unimpaired has left lying around
+if maparg('co', 'n') =~# "legacy_option_map(nr2char(getchar()))"
+  nunmap co
+endif
+if maparg('cop', 'n') ==# '<Nop>'
+  nunmap cop
+endif
+if maparg('=o', 'n') =~# "legacy_option_map(nr2char(getchar()))"
+  nunmap =o
+endif
+if maparg('=op', 'n') ==# '<Nop>'
+  nunmap =op
+endif
+
+"   <<<
+
+"   >> Cutlass >>>
+"   To cut text with Cutlass we need these mappings
+nnoremap x d
+xnoremap x d
+
+nnoremap xx dd
+nnoremap X D
+" With more control over what goes into the clipboard, now we can use the
+" system clipboard by default.
+set clipboard=unnamedplus
+"   <<<
+
+"   >>  Yoink >>>
+let g:yoinkSyncNumberedRegisters = v:true
+let g:yoinkIncludeDeleteOperations = v:true
+let g:yoinkSavePersistently = v:true
+let g:yoinkMoveCursorToEndOfPaste = v:true
+let g:yoinkSwapClampAtEnds = v:false
+
+nmap <M-]> <plug>(YoinkPostPasteSwapBack)
+nmap <M-[> <plug>(YoinkPostPasteSwapForward)
+
+nmap [y <plug>(YoinkRotateBack)
+nmap ]y <plug>(YoinkRotateForward)
+
+nmap p <plug>(YoinkPaste_p)
+nmap P <plug>(YoinkPaste_P)
+"   <<<
+
+"   >> Subversive >>>
+nmap s <plug>(SubversiveSubstitute)
+nmap ss <plug>(SubversiveSubstituteLine)
+nmap S <plug>(SubversiveSubstituteToEndOfLine)
+
+let g:subversivePromptWithActualCommand = v:true
+
+nmap <leader>s <plug>(SubversiveSubvertRange)
+xmap <leader>s <plug>(SubversiveSubvertRange)
+
+nmap <leader>S <plug>(SubversiveSubvertWordRange)
+"   <<<
+
+"   >> sandwich.vim settings >>>
+let g:textobj_sandwich_no_default_key_mappings = v:true
+let g:sandwich_no_default_key_mappings = v:true
+
+nmap sm <Plug>(operator-sandwich-add)
+xmap sm <Plug>(operator-sandwich-add)
+
+nmap sd <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
+nmap sdb <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-auto-a)
+nmap sr <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
+nmap srb <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-auto-a)
+xmap sd <Plug>(operator-sandwich-delete)
+xmap sr <Plug>(operator-sandwich-replace)
+
+"   >> Recipes >>>
+let g:sandwich#recipes = deepcopy(g:sandwich#default_recipes)
+let g:sandwich#recipes += [
+\   {
+\     'buns': ['(', ')'],
+\     'cursor': 'head',
+\     'command': ['startinsert'],
+\     'kind': ['add', 'replace'],
+\     'action': ['add'],
+\     'input': ['f']
+\   },
+\   {
+\     'buns': ['*', '*']
+\   },
+\   {
+\     'buns': ['$', '$']
+\   },
+\   {
+\     'buns': ['"""', '"""'],
+\     'input': ['m'],
+\     'filetype': ['python']
+\   }
+\]
+"   <<<
+
+"   <<<
+
+"   >> textobj-line >>>
+let g:textobj_line_no_default_key_mappings = v:true
+
+omap <silent> ii <Plug>(textobj-line-i)
+omap <silent> ai <Plug>(textobj-line-a)
+
+xmap <silent> ii <Plug>(textobj-line-i)
+xmap <silent> ai <Plug>(textobj-line-a)
+"   <<<
+
+" <<<
+
+" >> Colorscheme settings >>>
+
+colorscheme base16-flat
+" <<<
+
+" >> Custom commands >>>
+
 command! ClearLocList lexpr []
+command! ReloadConfig runtime init.vim | runtime ginit.vim
 
-function! ZoteroCite()
+"   >> Zotero helpers >>>
+function s:zoterocite()
   " pick a format based on the filetype (customize at will)
   let format = &filetype =~ '.*tex' ? 'citep' : 'pandoc'
   let api_call = 'http://localhost:23119/better-bibtex/cayw?format='.format.'&brackets=1'
   let ref = system('curl -s '.shellescape(api_call))
   return ref
 endfunction
+command! ZoteroCite call s:zoterocite()
 
-"
-" Autocommands
-" ?autocmd
-"
+noremap <leader>z "=ZoteroCite()<CR>p
+inoremap <C-z> <C-r>=ZoteroCite()<CR>
+"   <<<
 
-"
-" Vim plugin block configs
-" ?blocks
-"
+" <<<
 
-" vim-sandwich recipes
-let g:sandwich#recipes = deepcopy(g:sandwich#default_recipes)
-let g:sandwich#recipes += [
-\   {
-\       'buns': ['(', ')'],
-\       'cursor': 'head',
-\       'command': ['startinsert'],
-\       'kind': ['add', 'replace'],
-\       'action': ['add'],
-\       'input': ['f']
-\   },
-\   {
-\       'buns': ['*', '*']
-\   },
-\   {
-\       'buns': ['$', '$']
-\   },
-\   {
-\       'buns': ['"""', '"""'],
-\       'input': ['m'],
-\       'filetype': ['python']
-\   }
-\]
+" >> Source extra files >>>
 
-" Neomake makers
-let g:neomake_pandoc_md_maker = {
-\   'exe': 'make',
-\   'args': ['%:t:r.pdf'],
-\   'append_file': 0
-\}
-let g:neomake_tex_xelatex_maker = {
-\   'exe': 'xelatex',
-\   'args': ['-shell-escape', '-file-line-error', '-interaction', 'nonstopmode'],
-\   'errorformat': '%E%f:%l: %m'
-\}
-let g:neomake_tex_make_maker = {
-            \'args': ['%:t:r.pdf'],
-            \'append_file': 0,
-            \'errorformat': '%E%f:%l: %m'
-\}
+" Source ginit.vim if using the gnvim gui
+if exists("g:gnvim")
+  execute "source" stdpath("config") .. "/ginit.vim"
+endif
 
-let g:neomake_python_pyrun_maker = {
-        \ 'exe': 'python',
-        \ 'errorformat': '%E%f:%l:%c: %m',
-        \ 'serialize': 1,
-        \ 'serialize_abort_on_error': 1,
-        \ 'output_stream': 'stdout',
-        \ }
-"
 " Source a machine local config file, which is in the .gitignore
-"
+execute "source" stdpath("config") .. "/init.local.vim"
 
-runtime init.local.vim
+" <<<
+
+" vi: foldmethod=marker foldmarker=>>>,<<< foldcolumn=1

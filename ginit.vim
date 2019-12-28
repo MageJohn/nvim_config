@@ -3,6 +3,6 @@ if exists("g:GuiLoaded")
     call GuiWindowMaximized(1)
     GuiTabline 0
 endif
-set guifont=Source\ Code\ Pro:h11
+set guifont=Hack:h11
 
 execute "source" stdpath("config") .. "/ginit.local.vim"

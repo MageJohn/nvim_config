@@ -63,8 +63,8 @@ function packagedefs#init()
   Pac 'vim-scripts/BufOnly.vim'
   Pac 'arithran/vim-delete-hidden-buffers'
   Pac 'moll/vim-bbye'
-  "   File manager
-  Pac 'scrooloose/nerdtree'
+  "   File manager improvements
+  Pac 'tpope/vim-vinegar'
   "   Repeat many plugin operations
   Pac 'tpope/vim-repeat'
   " File types

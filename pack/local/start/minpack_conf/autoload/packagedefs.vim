@@ -43,8 +43,6 @@ function packagedefs#init()
   "   Python
   Pac 'fisadev/vim-isort'
   " Navigation
-  "   Jump multiple motions with a displayed key
-  Pac 'easymotion/vim-easymotion'
   "   Search improvements
   Pac 'haya14busa/is.vim' " Keep above cutlass
   Pac 'tpope/vim-abolish'

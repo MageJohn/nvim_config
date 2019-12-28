@@ -259,12 +259,6 @@ let g:startify_custom_header = [
 "let g:black_virtualenv = 
 "   <<<
 
-"   >> EasyMotion settings >>>
-let g:EasyMotion_startofline = v:false  " Keep cursor column with JK motions
-
-map <Leader> <Plug>(easymotion-prefix)
-"   <<<
-
 "   >> asterisk.vim settings >>>
 let g:asterisk#keeppos = v:true
 "   <<<

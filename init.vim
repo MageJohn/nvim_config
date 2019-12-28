@@ -48,7 +48,7 @@ set tildeop
 set undofile
 let &undodir = stdpath("data").."/undo"
 
-let g:python3_host_prog = "/usr/bin/python3.7"
+let g:python3_host_prog = "/usr/bin/python3.8"
 
 let $TERM = "vte"
 if has('nvim')

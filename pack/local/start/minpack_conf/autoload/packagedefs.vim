@@ -13,7 +13,7 @@ function packagedefs#init()
   "   -> Language server protocl
   Pac 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
+    \ 'do': '!bash install.sh',
     \ }
   "   -> Completion
   Pac 'Shougo/deoplete.nvim' 

@@ -340,7 +340,7 @@ function LC_maps()
   endif
 endfunction
 
-autocmd FileType * call LC_maps()
+autocmd FileType python call LC_maps()
 
 "   <<<
 

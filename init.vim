@@ -350,32 +350,35 @@ let g:echodoc#type = "echo"
 "   <<<
 
 "   >> unimpaired >>>
-"   Disable some of the mappings
-"       yop/[op/[op because I'll never need paste mode
-"       yoh/]oh/[oh because is.vim means I don't need to care about 'hlsearch'
-let g:nremap = {
-    \ 'yop': '<skip>',
-    \ '[op': '<skip>',
-    \ ']op': '<skip>',
-    \ 'yoh': '<skip>',
-    \ '[oh': '<skip>',
-    \ ']oh': '<skip>',
-    \ ']y': '<skip>',
-    \ '[y': '<skip>',
-    \}
-" Cleanup some mappings unimpaired has left lying around
-if maparg('co', 'n') =~# "legacy_option_map(nr2char(getchar()))"
-  nunmap co
-endif
-if maparg('cop', 'n') ==# '<Nop>'
-  nunmap cop
-endif
-if maparg('=o', 'n') =~# "legacy_option_map(nr2char(getchar()))"
-  nunmap =o
-endif
-if maparg('=op', 'n') ==# '<Nop>'
-  nunmap =op
-endif
+" Some cherry picked parts of unimpaired
+" Note that the plugin is not installed.
+nnoremap <silent> [b <Cmd>exe "".v:count1."bprevious"<CR>
+nnoremap <silent> ]b <Cmd>exe "".v:count1."bnext"<CR>
+nnoremap <silent> [B <Cmd>exe "".v:count1."bfirst"<CR>
+nnoremap <silent> ]B <Cmd>exe "".v:count1."blast"<CR>
+
+nnoremap <silent> [l <Cmd>exe "".v:count1."lprevious"<CR>
+nnoremap <silent> ]l <Cmd>exe "".v:count1."lnext"<CR>
+nnoremap <silent> [L <Cmd>exe "".v:count1."lfirst"<CR>
+nnoremap <silent> ]L <Cmd>exe "".v:count1."llast"<CR>
+
+function! s:BlankUp(count) abort
+  put!=repeat(nr2char(10), a:count)
+  ']+1
+  silent! call repeat#set("\<Plug>unimpairedBlankUp", a:count)
+endfunction
+
+function! s:BlankDown(count) abort
+  put =repeat(nr2char(10), a:count)
+  '[-1
+  silent! call repeat#set("\<Plug>unimpairedBlankDown", a:count)
+endfunction
+
+nnoremap <silent> [<Space> <Cmd>call <SID>BlankUp(v:count1)<CR>
+nnoremap <silent> ]<Space> <Cmd>call <SID>BlankDown(v:count1)<CR>
+
+nnoremap <silent> yow <Cmd>set wrap!<CR>
+nnoremap <silent> yol <Cmd>set list!<CR>
 
 "   <<<
 

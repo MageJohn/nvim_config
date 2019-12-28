@@ -480,6 +480,19 @@ xmap <silent> ai <Plug>(textobj-line-a)
 nmap <Leader>q <Cmd>Bwipeout<CR>
 "   <<<
 
+"   >> isort >>>
+augroup initvim_isort
+  au!
+  au FileType python packadd vim-isort
+augroup END
+"   <<<
+
+"   >> table-mode >>>
+augroup initvim_tablemode
+  au!
+  au FileType markdown packadd vim-table-mode
+augroup END
+"   <<<
 " <<<
 
 " >> Colorscheme settings >>>

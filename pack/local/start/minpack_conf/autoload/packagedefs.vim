@@ -39,9 +39,9 @@ function packagedefs#init()
   Pac 'tpope/vim-capslock'
   Pac 'svermeulen/vim-subversive'
   "   Text/Markdown
-  Pac 'dhruvasagar/vim-table-mode'
+  Pac 'dhruvasagar/vim-table-mode', {'type': 'opt'}
   "   Python
-  Pac 'fisadev/vim-isort'
+  Pac 'fisadev/vim-isort', {'type': 'opt'}
   " Navigation
   "   Search improvements
   Pac 'haya14busa/is.vim' " Keep above cutlass

@@ -497,7 +497,8 @@ augroup END
 
 " >> Colorscheme settings >>>
 
-colorscheme base16-flat
+let g:colors_name = 'base16-dracula'
+
 " <<<
 
 " >> Custom commands >>>

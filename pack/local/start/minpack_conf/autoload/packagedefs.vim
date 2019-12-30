@@ -31,8 +31,12 @@ function packagedefs#init()
   Pac 'wellle/targets.vim'
   Pac 'kana/vim-textobj-user'
   Pac 'kana/vim-textobj-entire'
-  Pac 'kana/vim-textobj-line'
   Pac 'somini/vim-textobj-fold'
+  Pac 'adriaanzon/vim-textobj-matchit'
+  Pac 'kana/vim-textobj-syntax'
+  Pac 'bps/vim-textobj-python'
+  Pac 'kana/vim-textobj-indent'
+  Pac 'Julian/vim-textobj-variable-segment'
 
   Pac 'junegunn/vim-easy-align'
   Pac 'Raimondi/delimitMate'

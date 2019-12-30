@@ -457,14 +457,44 @@ let g:sandwich#recipes += [
 
 "   <<<
 
-"   >> textobj-line >>>
-let g:textobj_line_no_default_key_mappings = v:true
+"   >> textobjects >>>
+packadd! vim-textobj-user
+"     >> textobj-matchit >>>
+let g:textobj_matchit_no_default_key_mappings = v:true
 
-omap <silent> ii <Plug>(textobj-line-i)
-omap <silent> ai <Plug>(textobj-line-a)
-
-xmap <silent> ii <Plug>(textobj-line-i)
-xmap <silent> ai <Plug>(textobj-line-a)
+call textobj#user#map('matchit', {
+\       '-': {
+\              'select-a': 'a%',
+\              'select-i': 'i%'
+\            }
+\ })
+"     <<<
+"     >> textobj-python >>>
+let g:textobj_python_no_default_key_mappings = v:true
+augroup initvim_textobj_python
+  au!
+  au FileType python 
+      \ call textobj#user#map('python', {
+      \   'class': {
+      \     'select-a': '<buffer>aC',
+      \     'select-i': '<buffer>iC',
+      \     'move-n': '<buffer>]C',
+      \     'move-p': '<buffer>[C',
+      \   },
+      \   'function': {
+      \     'select-a': '<buffer>af',
+      \     'select-i': '<buffer>if',
+      \     'move-n': '<buffer>]f',
+      \     'move-p': '<buffer>[f',
+      \   }
+      \ })
+"     <<<
+"     >> signify >>>
+omap ic <plug>(signify-motion-inner-pending)
+xmap ic <plug>(signify-motion-inner-visual)
+omap ac <plug>(signify-motion-outer-pending)
+xmap ac <plug>(signify-motion-outer-visual)
+"     <<<
 "   <<<
 
 "   >> bbye >>>

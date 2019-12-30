@@ -273,8 +273,6 @@ augroup initvim_delimitMate
   " autoclose quotes: = : ( { [ , . \
   au FileType vim let b:delimitMate_smart_quotes = '!\%(=\|:\|(\|{\|[\|,\|\.\|\\\)\s*\%#'
 augroup END
-
-imap <C-l> <Plug>delimitMateS-Tab
 "   <<<
 
 "   >> undotree settings >>>

@@ -1,4 +1,4 @@
-function packagedefs#init()
+function! packagedefs#init()
   if !exists("g:loaded_minpac")
     packadd minpac
   endif

@@ -145,20 +145,13 @@ nnoremap <A-l> <C-w>l
 
 " >> Plugin settings >>>
 
-"   >> Supertab settings >>>
-let g:SuperTabDefaultCompletionType = "<c-n>"
-let g:SuperTabLongestEnhanced = v:true
-
-augroup initvim_supertab
-  au!
-  au FileType vim let b:SuperTabNoCompleteAfter = ['"', '^', '\s']
-  au FileType python let b:SuperTabNoCompleteAfter = ['#', '^', '\s']
-augroup END
-
-"   <<<
-
 "   >> deoplete settings >>>
 let g:deoplete#enable_at_startup = v:true
+inoremap <expr><silent> <Tab> pumvisible() ? '<C-n>' : '<Tab>'
+inoremap <expr><silent> <S-Tab> pumvisible() ? '<C-p>' : ""
+inoremap <expr><silent> <C-l> deoplete#complete_common_string()
+packadd! deoplete.nvim
+call deoplete#custom#var('file', 'force_completion_length', 4)
 "   <<<
 
 "   >> vim-airline settings >>>

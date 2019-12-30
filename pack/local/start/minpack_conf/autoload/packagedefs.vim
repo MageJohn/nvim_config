@@ -17,7 +17,7 @@ function packagedefs#init()
     \ }
   "   -> Completion
   Pac 'Shougo/deoplete.nvim' 
-  Pac 'ervandew/supertab'
+  Pac 'Shougo/context_filetype.vim'
   Pac 'Shougo/echodoc.vim'
   " Appearance
   "                           :colorscheme can find opt plugins

@@ -61,7 +61,6 @@ function! packagedefs#init()
   "   Nice start screen and session management
   Pac 'mhinz/vim-startify'
   "   Close all buffers except one (defaults to current)
-  Pac 'vim-scripts/BufOnly.vim'
   Pac 'arithran/vim-delete-hidden-buffers'
   Pac 'moll/vim-bbye'
   "   File manager improvements

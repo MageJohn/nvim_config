@@ -48,7 +48,8 @@ let &undodir = stdpath("data").."/undo"
 
 let g:python3_host_prog = "/usr/bin/python3.8"
 
-let $TERM = "vte"
+" Terminal stuff
+"let $TERM = "vte"
 if has('nvim')
     let $GIT_EDITOR = 'nvr -cc vsplit --remote-wait'
 endif

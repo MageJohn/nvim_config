@@ -497,6 +497,10 @@ augroup END
 " Disable the default insert mode mapping from the plugin
 inoremap <C-L> <C-L>
 "   <<<
+
+"   >> float_preview >>>
+let g:float_preview#docked=0
+"   <<<
 " <<<
 
 " >> Colorscheme settings >>>

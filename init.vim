@@ -193,8 +193,11 @@ set noshowmode
 
 let g:airline_powerline_fonts = v:true
 let g:airline#extensions#tabline#enabled = v:true
-let g:airline#extensions#whitespace#enabled = v:false
-"   <<<
+
+let g:airline#extensions#tabline#buffer_idx_mode = 3
+nmap [b <Plug>AirlineSelectPrevTab
+nmap ]b <Plug>AirlineSelectNextTab
+nmap <expr> gb printf("<Plug>AirlineSelectTab%02d", v:count1)
 
 "   <<<
 

@@ -47,7 +47,7 @@ function! packagedefs#init()
   Pac 'fisadev/vim-isort', {'type': 'opt'}
   " Navigation
   "   Search improvements
-  Pac 'haya14busa/is.vim' " Keep above cutlass
+  Pac 'haya14busa/is.vim'
   Pac 'tpope/vim-abolish'
   "   * motion improvements
   Pac 'haya14busa/vim-asterisk'

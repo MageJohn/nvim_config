@@ -118,6 +118,10 @@ augroup END
 
 let g:mapleader  = ";"
 
+" Break the undo chain on <CR>
+" Makes each line added in insert mode a seperate undo operation
+inoremap <CR> <C-g>u<CR>
+
 " Open the location list
 nnoremap <Leader>lo <Cmd>lopen<CR>
 nnoremap <Leader>lc <Cmd>lclose<CR>

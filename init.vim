@@ -70,6 +70,7 @@ augroup initvim
 
 "   >> General >>>
   autocmd InsertLeave * pclose
+  autocmd TermOpen * setlocal nonu nornu
 "   <<<
 
 

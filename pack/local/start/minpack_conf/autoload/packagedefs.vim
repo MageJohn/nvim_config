@@ -71,6 +71,7 @@ function! packagedefs#init()
   " File types
   Pac 'lluchs/vim-wren'
   Pac 'cespare/vim-toml'
+  Pac 'jvirtanen/vim-octave'
 
   " VCS integration
   Pac 'mhinz/vim-signify'

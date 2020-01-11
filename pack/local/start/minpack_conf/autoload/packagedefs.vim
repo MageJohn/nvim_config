@@ -32,7 +32,6 @@ function! packagedefs#init()
   Pac 'kana/vim-textobj-user'
   Pac 'kana/vim-textobj-entire'
   Pac 'somini/vim-textobj-fold'
-  Pac 'adriaanzon/vim-textobj-matchit'
   Pac 'kana/vim-textobj-syntax'
   Pac 'bps/vim-textobj-python'
   Pac 'kana/vim-textobj-indent'

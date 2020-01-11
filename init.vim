@@ -527,6 +527,9 @@ colorscheme base16-dracula
 command! ClearLocList lexpr []
 command! ReloadConfig runtime init.vim | runtime ginit.vim
 
+command! -nargs=? Term exe "<mods> split" substitute("+term <args>", " ", '\\ ', "g")
+command! -nargs=? VTerm vert Term <args>
+
 "   >> Zotero helpers >>>
 function s:zoterocite()
   " pick a format based on the filetype (customize at will)

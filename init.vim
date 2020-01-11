@@ -146,6 +146,34 @@ nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
+"   >> unimpaired >>>
+" Some cherry picked parts of unimpaired
+" Note that the plugin is not installed.
+nnoremap <silent> [l <Cmd>exe "".v:count1."lprevious"<CR>
+nnoremap <silent> ]l <Cmd>exe "".v:count1."lnext"<CR>
+nnoremap <silent> [L <Cmd>exe "".v:count1."lfirst"<CR>
+nnoremap <silent> ]L <Cmd>exe "".v:count1."llast"<CR>
+
+function! s:BlankUp(count) abort
+  put!=repeat(nr2char(10), a:count)
+  ']+1
+  silent! call repeat#set("\<Plug>unimpairedBlankUp", a:count)
+endfunction
+
+function! s:BlankDown(count) abort
+  put =repeat(nr2char(10), a:count)
+  '[-1
+  silent! call repeat#set("\<Plug>unimpairedBlankDown", a:count)
+endfunction
+
+nnoremap <silent> [<Space> <Cmd>call <SID>BlankUp(v:count1)<CR>
+nnoremap <silent> ]<Space> <Cmd>call <SID>BlankDown(v:count1)<CR>
+
+nnoremap <silent> yow <Cmd>set wrap!<CR>
+nnoremap <silent> yol <Cmd>set list!<CR>
+
+"   <<<
+
 " <<<
 
 " >> Plugin settings >>>
@@ -319,38 +347,6 @@ let g:echodoc#enable_at_startup = v:true
 let g:echodoc#type = "echo"
 "   <<<
 
-"   >> unimpaired >>>
-" Some cherry picked parts of unimpaired
-" Note that the plugin is not installed.
-nnoremap <silent> [b <Cmd>exe "".v:count1."bprevious"<CR>
-nnoremap <silent> ]b <Cmd>exe "".v:count1."bnext"<CR>
-nnoremap <silent> [B <Cmd>exe "".v:count1."bfirst"<CR>
-nnoremap <silent> ]B <Cmd>exe "".v:count1."blast"<CR>
-
-nnoremap <silent> [l <Cmd>exe "".v:count1."lprevious"<CR>
-nnoremap <silent> ]l <Cmd>exe "".v:count1."lnext"<CR>
-nnoremap <silent> [L <Cmd>exe "".v:count1."lfirst"<CR>
-nnoremap <silent> ]L <Cmd>exe "".v:count1."llast"<CR>
-
-function! s:BlankUp(count) abort
-  put!=repeat(nr2char(10), a:count)
-  ']+1
-  silent! call repeat#set("\<Plug>unimpairedBlankUp", a:count)
-endfunction
-
-function! s:BlankDown(count) abort
-  put =repeat(nr2char(10), a:count)
-  '[-1
-  silent! call repeat#set("\<Plug>unimpairedBlankDown", a:count)
-endfunction
-
-nnoremap <silent> [<Space> <Cmd>call <SID>BlankUp(v:count1)<CR>
-nnoremap <silent> ]<Space> <Cmd>call <SID>BlankDown(v:count1)<CR>
-
-nnoremap <silent> yow <Cmd>set wrap!<CR>
-nnoremap <silent> yol <Cmd>set list!<CR>
-
-"   <<<
 
 "   >> Cutlass >>>
 "   To cut text with Cutlass we need these mappings

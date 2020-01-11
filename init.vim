@@ -252,10 +252,6 @@ let g:startify_custom_header = [
   \ ]
 "   <<<
 
-"   >> Black settings >>>
-"let g:black_virtualenv = 
-"   <<<
-
 "   >> asterisk.vim settings >>>
 let g:asterisk#keeppos = v:true
 "   <<<

@@ -167,17 +167,6 @@ let g:airline#extensions#tabline#enabled = v:true
 let g:airline#extensions#whitespace#enabled = v:false
 "   <<<
 
-"   >> vim-pandoc settings >>>
-let g:pandoc#modules#disabled = ["folding"]
-let g:pandoc#syntax#conceal#use = v:false
-augroup initvim_md
-  autocmd FileType pandoc setlocal spell
-  autocmd FileType pandoc setlocal nolist
-  autocmd FileType pandoc setlocal textwidth=79
-  autocmd FileType pandoc setlocal formatoptions+=t
-  autocmd FileType pandoc setlocal formatoptions+=a
-  autocmd FileType pandoc setlocal formatoptions-=l
-augroup END
 "   <<<
 
 "   >> "Neomake settings >>>
@@ -288,23 +277,12 @@ nmap ga <Plug>(EasyAlign)
 
 "   <<<
 
-"   >> NerdTree settings >>>
-nnoremap <Leader>f <Cmd>NERDTreeToggle<CR>
-
-" Change CWD when tree root changes, and when switching tabs
-let g:NERDTreeChDirMode = 3
-"   <<<
-
 "   >> is.vim and asterisk maps >>>
 map *  <Plug>(asterisk-z*)<Plug>(is-nohl-1)
 map #  <Plug>(asterisk-z#)<Plug>(is-nohl-1)
 map g* <Plug>(asterisk-zg*)<Plug>(is-nohl-1)
 map g# <Plug>(asterisk-zg#)<Plug>(is-nohl-1)
 
-"   <<<
-
-"   >> plugup settings >>>
-  let g:plugup#plug_git = stdpath("config") .. "/vim-plug"
 "   <<<
 
 "   >> fzf settings >>>

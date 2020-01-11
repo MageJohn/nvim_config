@@ -492,6 +492,11 @@ augroup initvim_tablemode
   au FileType markdown packadd vim-table-mode
 augroup END
 "   <<<
+
+"   >> capslock >>>
+" Disable the default insert mode mapping from the plugin
+inoremap <C-L> <C-L>
+"   <<<
 " <<<
 
 " >> Colorscheme settings >>>

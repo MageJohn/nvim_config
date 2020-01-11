@@ -71,5 +71,7 @@ function! packagedefs#init()
 
   Pac 'tpope/vim-scriptease'
 
+  Pac 'Yggdroot/LeaderF', {'do': '!./install.sh'}
+
   delcommand Pac
 endfunction

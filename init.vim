@@ -478,6 +478,11 @@ function! s:show_documentation()
   endif
 endfunction
 "   <<<
+
+"   >> LeaderF >>>
+let g:Lf_WindowPosition = 'popup'
+nmap <silent> <leader>m <Cmd>LeaderfMru<CR>
+"   <<<
 " <<<
 
 " >> Colorscheme settings >>>

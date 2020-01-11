@@ -178,15 +178,6 @@ nnoremap <silent> yol <Cmd>set list!<CR>
 
 " >> Plugin settings >>>
 
-"   >> deoplete settings >>>
-let g:deoplete#enable_at_startup = v:true
-inoremap <expr><silent> <Tab> pumvisible() ? '<C-n>' : '<Tab>'
-inoremap <expr><silent> <S-Tab> pumvisible() ? '<C-p>' : ""
-inoremap <expr><silent> <C-l> deoplete#complete_common_string()
-packadd! deoplete.nvim
-call deoplete#custom#var('file', 'force_completion_length', 4)
-"   <<<
-
 "   >> vim-airline settings >>>
 " Don't show mode (airline does this)
 set noshowmode
@@ -317,40 +308,6 @@ map g# <Plug>(asterisk-zg#)<Plug>(is-nohl-1)
 
 "   <<<
 
-"   >> fzf settings >>>
-if has('nvim') && !exists('g:fzf_layout')
-augroup initvim_fzf
-  autocmd  FileType fzf set laststatus=0 noshowmode noruler
-  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
-endif
-"   <<<
-
-"   >> LanguageClient settings >>>
-let g:LanguageClient_serverCommands = {
-  \ 'python': ['/usr/local/bin/pyls']
-  \ }
-
-let g:LanguageClient_changeThrottle = 0.5
-let g:LanguageClient_diagnosticsList = "Location"
-
-function LC_maps()
-  if has_key(g:LanguageClient_serverCommands, &filetype)
-  nnoremap <silent> gd <Cmd>call LanguageClient#textDocument_definition()<CR>
-  nnoremap <silent> H <Cmd>call LanguageClient#textDocument_hover()<CR>
-  set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
-  endif
-endfunction
-
-autocmd FileType python call LC_maps()
-
-"   <<<
-
-"   >> echodoc settings >>>
-let g:echodoc#enable_at_startup = v:true
-let g:echodoc#type = "echo"
-"   <<<
-
-
 "   >> Cutlass >>>
 "   To cut text with Cutlass we need these mappings
 nnoremap x d
@@ -451,7 +408,7 @@ call textobj#user#map('matchit', {
 let g:textobj_python_no_default_key_mappings = v:true
 augroup initvim_textobj_python
   au!
-  au FileType python 
+  au FileType python
       \ call textobj#user#map('python', {
       \   'class': {
       \     'select-a': '<buffer>aC',
@@ -479,13 +436,6 @@ xmap ac <plug>(signify-motion-outer-visual)
 nmap <Leader>q <Cmd>Bwipeout<CR>
 "   <<<
 
-"   >> isort >>>
-augroup initvim_isort
-  au!
-  au FileType python packadd vim-isort
-augroup END
-"   <<<
-
 "   >> table-mode >>>
 augroup initvim_tablemode
   au!
@@ -500,6 +450,33 @@ inoremap <C-L> <C-L>
 
 "   >> float_preview >>>
 let g:float_preview#docked=0
+"   <<<
+
+"   >> coc.nvim >>>
+set updatetime=300
+
+inoremap <expr><silent> <Tab> pumvisible() ? '<Down>' : '<Tab>'
+inoremap <expr><silent> <S-Tab> pumvisible() ? '<Up>' : ""
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+command! -nargs=0 Format :call CocAction('format')
+
+autocmd FileType json syntax match Comment +\/\/.\+$+
+
+set completeopt=menuone
+
+set keywordprg=":call <SID>show_documentation()"
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 "   <<<
 " <<<
 

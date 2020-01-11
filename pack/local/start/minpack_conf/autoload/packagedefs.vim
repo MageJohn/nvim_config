@@ -10,15 +10,10 @@ function! packagedefs#init()
   Pac 'k-takata/minpac', {'type': 'opt'}
 
   " Code intelligence
-  "   -> Language server protocl
-  Pac 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': '!bash install.sh',
-    \ }
-  "   -> Completion
-  Pac 'Shougo/deoplete.nvim' 
-  Pac 'Shougo/context_filetype.vim'
+  "   -> Language server protocol
+  Pac 'neoclide/coc.nvim', {'type': 'start', 'branch': 'release'}
   Pac 'ncm2/float-preview.nvim'
+
   " Appearance
   "                           :colorscheme can find opt plugins
   Pac 'MageJohn/base16-vim', {'type': 'opt'}

@@ -516,7 +516,7 @@ augroup END
 
 " >> Colorscheme settings >>>
 
-let g:colors_name = 'base16-dracula'
+colorscheme base16-dracula
 
 " <<<
 

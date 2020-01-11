@@ -54,6 +54,7 @@ if has('nvim')
 endif
 
 set termguicolors
+set title
 
 " netrw settings
 let g:netrw_winsize = 25

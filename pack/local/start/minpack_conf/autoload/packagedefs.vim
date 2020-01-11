@@ -18,7 +18,6 @@ function! packagedefs#init()
   "   -> Completion
   Pac 'Shougo/deoplete.nvim' 
   Pac 'Shougo/context_filetype.vim'
-  Pac 'Shougo/echodoc.vim'
   Pac 'ncm2/float-preview.nvim'
   " Appearance
   "                           :colorscheme can find opt plugins

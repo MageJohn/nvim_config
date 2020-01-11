@@ -20,10 +20,8 @@ set hlsearch | nohls
 set incsearch
 set inccommand="nosplit"
 
-" Set vim to show whitespace
+" Showing whitespace
 set lcs=tab:>-,space:.,eol:§,extends:…,precedes:…,nbsp:+
-
-set list
 
 " Indentation settings
 set tabstop=4

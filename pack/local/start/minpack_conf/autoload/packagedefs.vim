@@ -53,7 +53,6 @@ function! packagedefs#init()
   "   * motion improvements
   Pac 'haya14busa/vim-asterisk'
   "   Jump to matching groups with %
-  Pac 'adelarsq/vim-matchit'
   Pac 'svermeulen/vim-cutlass'
   Pac 'svermeulen/vim-yoink'
   "   Visualise undos in a tree

@@ -37,7 +37,7 @@ function! packagedefs#init()
   Pac 'kana/vim-textobj-indent'
   Pac 'Julian/vim-textobj-variable-segment'
 
-  Pac 'junegunn/vim-easy-align'
+  Pac 'junegunn/vim-easy-align', {'type': 'opt'}
   Pac 'Raimondi/delimitMate'
   Pac 'tpope/vim-capslock'
   Pac 'svermeulen/vim-subversive'

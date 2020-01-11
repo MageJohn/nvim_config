@@ -74,7 +74,7 @@ function! packagedefs#init()
 
   " VCS integration
   Pac 'mhinz/vim-signify'
-  Pac 'tpope/vim-fugitive'
+  Pac 'lambdalisue/gina.vim'
 
   Pac 'tpope/vim-scriptease'
 

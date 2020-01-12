@@ -6,72 +6,67 @@ function! packagedefs#init()
 
   call minpac#init()
 
-  " The package manager
-  Pac 'k-takata/minpac', {'type': 'opt'}
+  " -> The package manager
+      Pac "k-takata/minpac", {'type': 'opt'}
 
-  " Code intelligence
-  "   -> Language server protocol
-  Pac 'neoclide/coc.nvim', {'type': 'start', 'branch': 'release'}
-  Pac 'ncm2/float-preview.nvim'
+  " -> Editing
+      Pac 'neoclide/coc.nvim', {'branch': 'release'}
+  "   -> Completion
+        Pac 'ncm2/float-preview.nvim'
+        Pac 'Raimondi/delimitMate'
+  "   -> Formatting
+        Pac 'junegunn/vim-easy-align', {'type': 'opt'}
+        Pac 'dhruvasagar/vim-table-mode', {'type': 'opt'}
+  "   -> Refactoring
+        Pac 'machakann/vim-sandwich'
+        Pac 'svermeulen/vim-subversive'
+        Pac 'tpope/vim-abolish', {'type': 'opt'}
+  "   -> Text Objects
+        Pac 'wellle/targets.vim'
+        Pac 'kana/vim-textobj-user'
+        Pac 'kana/vim-textobj-entire'
+        Pac 'somini/vim-textobj-fold'
+        Pac 'kana/vim-textobj-syntax'
+        Pac 'bps/vim-textobj-python'
+        Pac 'kana/vim-textobj-indent'
+        Pac 'Julian/vim-textobj-variable-segment'
+  "   -> Searching
+        Pac 'haya14busa/is.vim'
+        Pac 'haya14busa/vim-asterisk'
+  "   -> Miscellaneous
+        Pac 'tpope/vim-capslock'
+        Pac 'Yggdroot/LeaderF', {'do': '!./install.sh'}
+        Pac 'svermeulen/vim-cutlass'
+        Pac 'svermeulen/vim-yoink'
+        Pac 'mbbill/undotree'
 
-  " Appearance
-  "                           :colorscheme can find opt plugins
-  Pac 'MageJohn/base16-vim', {'type': 'opt'}
-  Pac 'vim-airline/vim-airline'
-  Pac 'vim-airline/vim-airline-themes'
-  Pac 'enricobacis/vim-airline-clock'
+  " -> Appearance
+  "   -> Colorscheme
+        Pac 'MageJohn/base16-vim', {'type': 'opt'}
+  "   -> Statusline
+        Pac 'vim-airline/vim-airline'
+        Pac 'vim-airline/vim-airline-themes'
+        Pac 'enricobacis/vim-airline-clock'
+  "   -> Syntax highlighting
+        Pac 'lluchs/vim-wren'
+        Pac 'cespare/vim-toml'
+        Pac 'jvirtanen/vim-octave'
+  "   -> Miscellaneous
+        Pac 'mhinz/vim-startify'
 
-  " Textobjects
-  Pac 'machakann/vim-sandwich'
-  Pac 'wellle/targets.vim'
-  Pac 'kana/vim-textobj-user'
-  Pac 'kana/vim-textobj-entire'
-  Pac 'somini/vim-textobj-fold'
-  Pac 'kana/vim-textobj-syntax'
-  Pac 'bps/vim-textobj-python'
-  Pac 'kana/vim-textobj-indent'
-  Pac 'Julian/vim-textobj-variable-segment'
+  " -> VCS integration
+    Pac 'mhinz/vim-signify'
+    Pac 'lambdalisue/gina.vim'
 
-  Pac 'junegunn/vim-easy-align', {'type': 'opt'}
-  Pac 'Raimondi/delimitMate'
-  Pac 'tpope/vim-capslock'
-  Pac 'svermeulen/vim-subversive'
-  "   Text/Markdown
-  Pac 'dhruvasagar/vim-table-mode', {'type': 'opt'}
-  "   Python
-  Pac 'fisadev/vim-isort', {'type': 'opt'}
-  " Navigation
-  "   Search improvements
-  Pac 'haya14busa/is.vim'
-  Pac 'tpope/vim-abolish'
-  "   * motion improvements
-  Pac 'haya14busa/vim-asterisk'
-  "   Jump to matching groups with %
-  Pac 'svermeulen/vim-cutlass'
-  Pac 'svermeulen/vim-yoink'
-  "   Visualise undos in a tree
-  Pac 'mbbill/undotree'
-  "   Nice start screen and session management
-  Pac 'mhinz/vim-startify'
-  "   Close all buffers except one (defaults to current)
-  Pac 'arithran/vim-delete-hidden-buffers'
-  Pac 'moll/vim-bbye'
-  "   File manager improvements
-  Pac 'tpope/vim-vinegar'
-  "   Repeat many plugin operations
-  Pac 'tpope/vim-repeat'
-  " File types
-  Pac 'lluchs/vim-wren'
-  Pac 'cespare/vim-toml'
-  Pac 'jvirtanen/vim-octave'
+  " -> Miscellaneous
+    Pac 'arithran/vim-delete-hidden-buffers'
+    Pac 'moll/vim-bbye'
+    Pac 'tpope/vim-vinegar'
+    Pac 'tpope/vim-scriptease'
 
-  " VCS integration
-  Pac 'mhinz/vim-signify'
-  Pac 'lambdalisue/gina.vim'
 
-  Pac 'tpope/vim-scriptease'
-
-  Pac 'Yggdroot/LeaderF', {'do': '!./install.sh'}
+  " Libraries
+    Pac 'tpope/vim-repeat'
 
   delcommand Pac
 endfunction

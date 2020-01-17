@@ -7,7 +7,7 @@ function! packagedefs#init()
   call minpac#init()
 
   " -> The package manager
-      Pac "k-takata/minpac", {'type': 'opt'}
+      Pac 'k-takata/minpac', {'type': 'opt'}
 
   " -> Editing
       Pac 'neoclide/coc.nvim', {'branch': 'release'}

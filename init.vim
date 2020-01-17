@@ -14,8 +14,8 @@ set linebreak
 " Search settings
 set ignorecase
 set smartcase
-    " adding nohls prevents previous searches being highlighted when the
-    " config is reloaded
+  " adding nohls prevents previous searches being highlighted when the
+  " config is reloaded
 set hlsearch | nohls
 set incsearch
 set inccommand="nosplit"
@@ -99,11 +99,7 @@ augroup initvim
 
 "     >> vim >>>
 " <Tab> indents two spaces, but an actual tab is 8 (for identification)
-  autocmd FileType vim setlocal tabstop=8 shiftwidth=2 expandtab
-"     <<<
-
-"     >> pyton >>>
-
+  autocmd FileType vim setlocal tabstop=2 shiftwidth=2 expandtab
 "     <<<
 "   <<<
 

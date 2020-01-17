@@ -119,10 +119,6 @@ augroup END
 
 let g:mapleader  = ";"
 
-" Break the undo chain on <CR>
-" Makes each line added in insert mode a seperate undo operation
-inoremap <CR> <C-g>u<CR>
-
 " Open the location list
 nnoremap <Leader>lo <Cmd>lopen<CR>
 nnoremap <Leader>lc <Cmd>lclose<CR>
@@ -453,19 +449,38 @@ let g:float_preview#docked=0
 "   >> coc.nvim >>>
 set updatetime=300
 
-inoremap <expr><silent> <Tab> pumvisible() ? '<Down>' : '<Tab>'
-inoremap <expr><silent> <S-Tab> pumvisible() ? '<Up>' : ""
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+  \ pumvisible() ? "\<C-n>" : 
+  \ <SID>check_back_space() ? "\<Tab>" :
+  \ coc#refresh()
+
+inoremap <silent><expr> <S-Tab>
+  \ pumvisible() ? "\<C-p>" :
+  \ ""
+
+" Break the undo chain on <CR>
+" Makes each line added in insert mode a seperate undo operation
+inoremap <silent><expr> <CR>
+  \ pumvisible() ? "<C-y>" :
+  \ "<CR><C-g>u"
+
+set completeopt=noselect,menuone
 
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
+nmap <expr> Q CocHasProvider("format") ? '<Plug>(coc-format-selected)' : 'gq'
+
 command! -nargs=0 Format :call CocAction('format')
 
 autocmd FileType json syntax match Comment +\/\/.\+$+
-
-set completeopt=menuone
 
 set keywordprg=":call <SID>show_documentation()"
 function! s:show_documentation()

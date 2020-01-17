@@ -176,8 +176,8 @@ let g:airline_powerline_fonts = v:true
 let g:airline#extensions#tabline#enabled = v:true
 
 let g:airline#extensions#tabline#buffer_idx_mode = 3
-nmap [b <Plug>AirlineSelectPrevTab
-nmap ]b <Plug>AirlineSelectNextTab
+nmap [b <Cmd>bnext<Cr>
+nmap ]b <Cmd>bprev<Cr>
 nmap <expr> gb printf("<Plug>AirlineSelectTab%02d", v:count1)
 
 "   <<<
@@ -424,6 +424,7 @@ xmap ac <plug>(signify-motion-outer-visual)
 
 "   >> bbye >>>
 nmap <Leader>q <Cmd>Bwipeout<CR>
+nmap <Leader>Q <Cmd>bwipewout<CR>
 "   <<<
 
 "   >> table-mode >>>
@@ -491,6 +492,7 @@ endfunction
 "   >> LeaderF >>>
 let g:Lf_WindowPosition = 'popup'
 nmap <silent> <leader>m <Cmd>LeaderfMru<CR>
+nmap <silent> <leader>F <Cmd>LeaderfSelf<CR>
 "   <<<
 " <<<
 

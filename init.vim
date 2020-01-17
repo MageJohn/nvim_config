@@ -48,8 +48,8 @@ let &undodir = stdpath("data").."/undo"
 
 " Terminal stuff
 "let $TERM = "vte"
-if has('nvim')
-    let $GIT_EDITOR = 'nvr -cc vsplit --remote-wait'
+if exepath("nvr")
+  let $GIT_EDITOR = 'nvr -cc vsplit --remote-wait'
 endif
 
 set termguicolors

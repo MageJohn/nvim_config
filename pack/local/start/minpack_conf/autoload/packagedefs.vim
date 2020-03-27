@@ -65,6 +65,7 @@ function! packagedefs#init()
     Pac 'tpope/vim-vinegar'
     Pac 'tpope/vim-scriptease'
     Pac 'ddrscott/vim-window'
+    Pac 'kassio/neoterm'
 
 
   " Libraries

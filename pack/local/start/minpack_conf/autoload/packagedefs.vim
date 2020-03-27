@@ -20,7 +20,7 @@ function! packagedefs#init()
   "   -> Refactoring
         Pac 'machakann/vim-sandwich'
         Pac 'svermeulen/vim-subversive'
-        Pac 'tpope/vim-abolish', {'type': 'opt'}
+        Pac 'tpope/vim-abolish'
   "   -> Text Objects
         Pac 'wellle/targets.vim'
         Pac 'kana/vim-textobj-user'

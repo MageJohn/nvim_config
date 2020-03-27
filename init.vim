@@ -452,7 +452,7 @@ function! s:check_back_space() abort
 endfunction
 
 inoremap <silent><expr> <Tab>
-  \ pumvisible() ? "\<C-n>" : 
+  \ pumvisible() ? "\<C-n>" :
   \ <SID>check_back_space() ? "\<Tab>" :
   \ coc#refresh()
 
@@ -479,7 +479,7 @@ command! -nargs=0 Format :call CocAction('format')
 
 autocmd FileType json syntax match Comment +\/\/.\+$+
 
-set keywordprg=":call <SID>show_documentation()"
+nmap K <Cmd>call <SID>show_documentation()<Cr>
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')

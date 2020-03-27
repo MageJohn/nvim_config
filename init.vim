@@ -118,7 +118,7 @@ augroup END
 
 " >> Maps >>>
 
-let g:mapleader  = ";"
+let mapleader = " "
 
 " Open the location list
 nnoremap <Leader>lo <Cmd>lopen<CR>
@@ -140,6 +140,11 @@ nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
+
+" Use <Leader>w for window operations
+nnoremap <Leader>w <C-w>
+
+nnoremap <Leader>fs <Cmd>w<CR>
 
 "   >> unimpaired >>>
 " Some cherry picked parts of unimpaired

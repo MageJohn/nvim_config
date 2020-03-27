@@ -424,52 +424,6 @@ inoremap <C-L> <C-L>
 let g:float_preview#docked=0
 "   <<<
 
-"   >> coc.nvim >>>
-set updatetime=300
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-inoremap <silent><expr> <Tab>
-  \ pumvisible() ? "\<C-n>" :
-  \ <SID>check_back_space() ? "\<Tab>" :
-  \ coc#refresh()
-
-inoremap <silent><expr> <S-Tab>
-  \ pumvisible() ? "\<C-p>" :
-  \ ""
-
-" Break the undo chain on <CR>
-" Makes each line added in insert mode a seperate undo operation
-inoremap <silent><expr> <CR>
-  \ pumvisible() ? "<C-y>" :
-  \ "<CR><C-g>u"
-
-set completeopt=noselect,menuone
-
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-nmap <expr> Q CocHasProvider("format") ? '<Plug>(coc-format-selected)' : 'gq'
-
-command! -nargs=0 Format :call CocAction('format')
-
-autocmd FileType json syntax match Comment +\/\/.\+$+
-
-nmap K <Cmd>call <SID>show_documentation()<Cr>
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-"   <<<
-
 "   >> LeaderF >>>
 let g:Lf_WindowPosition = 'popup'
 let g:Lf_ShortcutF = '<Leader>ff'
@@ -522,6 +476,19 @@ nnoremap <C-w>o :call window#only()<cr>
 nnoremap <C-w><c-o> :call window#only()<cr>
 "   <<<
 
+"   >> LanguageClient-neovim >>>
+let g:LanguageClient_serverCommands = {
+\ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+\ 'python': ['/usr/local/bin/pyls'],
+\ }
+
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+" Or map each action separately
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+"   <<<
+
 "   >> pear-tree >>>
 " Disable 'dot repeatable expand' because it messes up too often.
 let g:pear_tree_repeatable_expand = v:false
@@ -529,6 +496,15 @@ let g:pear_tree_repeatable_expand = v:false
 let g:pear_tree_smart_openers = v:true
 let g:pear_tree_smart_closers = v:true
 let g:pear_tree_smart_backspace = v:true
+"   <<<
+
+"   >> deoplete settings >>>
+let g:deoplete#enable_at_startup = v:true
+inoremap <expr><silent> <Tab> pumvisible() ? '<C-n>' : '<Tab>'
+inoremap <expr><silent> <S-Tab> pumvisible() ? '<C-p>' : ""
+inoremap <expr><silent> <C-l> deoplete#complete_common_string()
+packadd! deoplete.nvim
+call deoplete#custom#var('file', 'force_completion_length', 4)
 "   <<<
 " <<<
 

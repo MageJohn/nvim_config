@@ -63,6 +63,7 @@ function! packagedefs#init()
     Pac 'moll/vim-bbye'
     Pac 'tpope/vim-vinegar'
     Pac 'tpope/vim-scriptease'
+    Pac 'ddrscott/vim-window'
 
 
   " Libraries

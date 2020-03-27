@@ -313,12 +313,14 @@ nmap s <plug>(SubversiveSubstitute)
 nmap ss <plug>(SubversiveSubstituteLine)
 nmap S <plug>(SubversiveSubstituteToEndOfLine)
 
+xmap p <plug>(SubversiveSubstitute)
+xmap P <plug>(SubversiveSubstitute)
+
+nmap <leader>s <plug>(SubversiveSubstituteRangeNoPrompt)
+xmap <leader>s <plug>(SubversiveSubstituteRangeNoPrompt)
+
 let g:subversivePromptWithActualCommand = v:true
-
-nmap <leader>s <plug>(SubversiveSubvertRange)
-xmap <leader>s <plug>(SubversiveSubvertRange)
-
-nmap <leader>S <plug>(SubversiveSubvertWordRange)
+nmap <leader>ss <plug>(SubversiveSubstituteWordRange)
 "   <<<
 
 "   >> sandwich.vim settings >>>

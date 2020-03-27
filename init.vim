@@ -18,7 +18,7 @@ set smartcase
   " config is reloaded
 set hlsearch | nohls
 set incsearch
-set inccommand="nosplit"
+set inccommand=nosplit
 
 " Showing whitespace
 set lcs=tab:>-,space:.,eol:§,extends:…,precedes:…,nbsp:+

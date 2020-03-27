@@ -405,7 +405,7 @@ xmap ac <plug>(signify-motion-outer-visual)
 
 "   >> bbye >>>
 nmap <Leader>q <Cmd>Bwipeout<CR>
-nmap <Leader>Q <Cmd>bwipewout<CR>
+nmap <Leader>Q <Cmd>bwipeout<CR>
 "   <<<
 
 "   >> table-mode >>>

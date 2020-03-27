@@ -472,8 +472,10 @@ endfunction
 
 "   >> LeaderF >>>
 let g:Lf_WindowPosition = 'popup'
-nmap <silent> <leader>m <Cmd>LeaderfMru<CR>
+let g:Lf_ShortcutF = '<Leader>ff'
+nmap <silent> <leader>fr <Cmd>LeaderfMru<CR>
 nmap <silent> <leader>F <Cmd>LeaderfSelf<CR>
+nmap <silent> <leader>fg <Cmd>LeaderfRgInteractive<CR>
 "   <<<
 
 "   >> pear-tree >>>

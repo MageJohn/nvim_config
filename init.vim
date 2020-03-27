@@ -146,6 +146,9 @@ nnoremap <Leader>w <C-w>
 
 nnoremap <Leader>fs <Cmd>w<CR>
 
+" Use Q to repeat the last macro
+nnoremap Q @@
+
 "   >> unimpaired >>>
 " Some cherry picked parts of unimpaired
 " Note that the plugin is not installed.

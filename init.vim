@@ -46,6 +46,11 @@ set tildeop
 set undofile
 let &undodir = stdpath("data").."/undo"
 
+" Minimal number of lines to keep above and below the cursor
+set scrolloff=4
+" Similar for horizontal scrolling
+set sidescrolloff=5
+
 " Terminal stuff
 "let $TERM = "vte"
 if exepath("nvr")

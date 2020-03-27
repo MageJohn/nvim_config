@@ -13,7 +13,7 @@ function! packagedefs#init()
       Pac 'neoclide/coc.nvim', {'branch': 'release'}
   "   -> Completion
         Pac 'ncm2/float-preview.nvim'
-        Pac 'Raimondi/delimitMate'
+        Pac 'tmsvg/pear-tree'
   "   -> Formatting
         Pac 'junegunn/vim-easy-align', {'type': 'opt'}
         Pac 'dhruvasagar/vim-table-mode', {'type': 'opt'}

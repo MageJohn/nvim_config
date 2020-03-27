@@ -258,25 +258,6 @@ let g:startify_custom_header = [
 let g:asterisk#keeppos = v:true
 "   <<<
 
-"   >> delimitMate settings >>>
-let g:delimitMate_expand_cr = 2
-let g:delimitMate_expand_space = v:true
-let g:delimitMate_jump_expansion = v:true
-let g:delimitMate_balance_matchpairs = v:true
-let g:delimitMate_excluded_regions = "Comment"
-let g:delimitMate_insert_eol_marker = 0  " values: 0, 1, 2
-augroup initvim_delimitMate
-  au!
-  au FileType c let g:delimitMate_insert_eol_marker = 2
-  au FileType c let b:delimitMate_eol_marker = ";"
-  au FileType python let b:delimitMate_nesting_quotes = ['"', "'"]
-
-  " If one of these characters appears to the left of the cursor then
-  " autoclose quotes: = : ( { [ , . \
-  au FileType vim let b:delimitMate_smart_quotes = '!\%(=\|:\|(\|{\|[\|,\|\.\|\\\)\s*\%#'
-augroup END
-"   <<<
-
 "   >> undotree settings >>>
 " Open the undo tree
 nnoremap <Leader>u <Cmd>UndotreeToggle<CR>
@@ -493,6 +474,15 @@ endfunction
 let g:Lf_WindowPosition = 'popup'
 nmap <silent> <leader>m <Cmd>LeaderfMru<CR>
 nmap <silent> <leader>F <Cmd>LeaderfSelf<CR>
+"   <<<
+
+"   >> pear-tree >>>
+" Disable 'dot repeatable expand' because it messes up too often.
+let g:pear_tree_repeatable_expand = v:false
+" Try to balance pairs instead of greedily adding/deleting pairs
+let g:pear_tree_smart_openers = v:true
+let g:pear_tree_smart_closers = v:true
+let g:pear_tree_smart_backspace = v:true
 "   <<<
 " <<<
 

@@ -553,12 +553,16 @@ inoremap <C-z> <C-r>=ZoteroCite()<CR>
 " >> Source extra files >>>
 
 " Source ginit.vim if using the gnvim gui
-if exists("g:gnvim")
-  execute "source" stdpath("config") .. "/ginit.vim"
+let s:ginit_file = stdpath("config") .. "/ginit.vim"
+if exists("g:gnvim") && file_readable(s:ginit_file)
+  execute "source" s:ginit_file
 endif
 
 " Source a machine local config file, which is in the .gitignore
-execute "source" stdpath("config") .. "/init.local.vim"
+let s:local_init_file = stdpath("config") .. "/init.local.vim"
+if filereadable(s:local_init_file)
+    execute "source" s:local_init_file
+endif
 
 " <<<
 

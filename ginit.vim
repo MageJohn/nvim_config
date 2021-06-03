@@ -5,4 +5,7 @@ if exists("g:GuiLoaded")
 endif
 set guifont=Hack:h11
 
-execute "source" stdpath("config") .. "/ginit.local.vim"
+let s:local_ginit_file = stdpath("config") .. "/ginit.local.vim"
+if filereadable(s:local_ginit_file)
+    execute "source" s:local_ginit_file
+endif

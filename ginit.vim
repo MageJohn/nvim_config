@@ -3,7 +3,7 @@ if exists("g:GuiLoaded")
     call GuiWindowMaximized(1)
     GuiTabline 0
 endif
-set guifont=Hack:h11
+set guifont=Fira\ Code:h13
 
 let s:local_ginit_file = stdpath("config") .. "/ginit.local.vim"
 if filereadable(s:local_ginit_file)

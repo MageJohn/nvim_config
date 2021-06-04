@@ -10,9 +10,10 @@ function! packagedefs#init()
       Pac 'k-takata/minpac', {'type': 'opt'}
 
   " -> Editing
-      Pac 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': '!bash install.sh'}
+  "   -> Language Server
+        Pac 'neovim/nvim-lspconfig'
+        Pac 'kabouzeid/nvim-lspinstall'
   "   -> Completion
-        Pac 'Shougo/deoplete.nvim'
         Pac 'ncm2/float-preview.nvim'
         Pac 'tmsvg/pear-tree'
   "   -> Formatting

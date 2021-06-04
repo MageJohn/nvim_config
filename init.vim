@@ -254,7 +254,7 @@ nmap <expr> gb printf("<Plug>AirlineSelectTab%02d", v:count1)
 
 "   >> Startify settings >>>
 let g:startify_session_persistence = v:true
-let g:startify_session_dir = '~/.local/share/nvim/session'
+let g:startify_session_dir = stdpath("data")..'/session'
 let g:startify_custom_header = [
   \ '   /\   |\                           _            ',
   \ '  /  \  | \                         (_)           ',

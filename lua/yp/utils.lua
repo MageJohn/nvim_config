@@ -1,5 +1,9 @@
 local utils = {}
 
+---@param cmd string
+---@param repl string
+---@param attrs? table<number | string, string | number | boolean>
+---@param redefine? boolean
 utils.command = function(cmd, repl, attrs, redefine)
   local args = {
     (redefine and "command!") or "command"

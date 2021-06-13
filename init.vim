@@ -109,9 +109,8 @@ augroup initvim
   autocmd FileType gitcommit,gitrebase,gitconfig set bufhidden=delete
 "     <<<
 
-"     >> vim >>>
-" <Tab> indents two spaces, but an actual tab is 8 (for identification)
-  autocmd FileType vim setlocal tabstop=2 shiftwidth=2 expandtab
+"     >> vim, lua >>>
+  autocmd FileType vim,lua setlocal tabstop=2 shiftwidth=2 expandtab
 "     <<<
 "   <<<
 

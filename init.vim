@@ -276,10 +276,6 @@ let g:startify_custom_header = [
   \ ]
 "   <<<
 
-"   >> asterisk.vim settings >>>
-let g:asterisk#keeppos = v:true
-"   <<<
-
 "   >> undotree settings >>>
 " Open the undo tree
 nnoremap <Leader>u <Cmd>UndotreeToggle<CR>

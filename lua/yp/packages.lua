@@ -25,7 +25,10 @@ return require('packer').startup(function(use)
   use 'Julian/vim-textobj-variable-segment'
 ---> Searching
   use 'haya14busa/is.vim'
-  use 'haya14busa/vim-asterisk'
+  use {
+      'haya14busa/vim-asterisk',
+      config = function() vim.g["asterisk#keeppos"] = true end
+  }
 ---> Miscellaneous
   use 'tpope/vim-capslock'
   use { 'Yggdroot/LeaderF', run = './install.sh' }

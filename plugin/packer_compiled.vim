@@ -149,6 +149,7 @@ _G.packer_plugins = {
     path = "/Users/yuripieters/.local/share/nvim/site/pack/packer/start/vim-airline-themes"
   },
   ["vim-asterisk"] = {
+    config = { "\27LJ\2\n2\0\0\2\0\3\0\0056\0\0\0009\0\1\0+\1\2\0=\1\2\0K\0\1\0\21asterisk#keeppos\6g\bvim\0" },
     loaded = true,
     path = "/Users/yuripieters/.local/share/nvim/site/pack/packer/start/vim-asterisk"
   },
@@ -252,6 +253,10 @@ _G.packer_plugins = {
 }
 
 time("Defining packer_plugins", false)
+-- Config for: vim-asterisk
+time("Config for vim-asterisk", true)
+try_loadstring("\27LJ\2\n2\0\0\2\0\3\0\0056\0\0\0009\0\1\0+\1\2\0=\1\2\0K\0\1\0\21asterisk#keeppos\6g\bvim\0", "config", "vim-asterisk")
+time("Config for vim-asterisk", false)
 
 -- Command lazy-loads
 time("Defining lazy-load commands", true)

@@ -111,6 +111,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/yuripieters/.local/share/nvim/site/pack/packer/start/nvim-lspinstall"
   },
+  ["oceanic-next"] = {
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/yuripieters/.local/share/nvim/site/pack/packer/opt/oceanic-next"
+  },
   ["pear-tree"] = {
     loaded = true,
     path = "/Users/yuripieters/.local/share/nvim/site/pack/packer/start/pear-tree"

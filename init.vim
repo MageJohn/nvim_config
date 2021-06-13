@@ -513,7 +513,7 @@ let g:pear_tree_smart_backspace = v:true
 
 " >> Colorscheme settings >>>
 
-colorscheme base16-dracula
+colorscheme OceanicNext
 
 " <<<
 

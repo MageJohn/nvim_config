@@ -36,6 +36,7 @@ return require('packer').startup(function(use)
 --> Appearance
 ---> Colorscheme
   use { 'MageJohn/base16-vim', opt = true }
+  use { 'mhartington/oceanic-next', opt = true }
 ---> Statusline
   use 'vim-airline/vim-airline'
   use 'vim-airline/vim-airline-themes'

@@ -121,6 +121,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/yuripieters/.local/share/nvim/site/pack/packer/start/popup.nvim"
   },
+  ["specs.nvim"] = {
+    loaded = true,
+    path = "/Users/yuripieters/.local/share/nvim/site/pack/packer/start/specs.nvim"
+  },
   ["targets.vim"] = {
     loaded = true,
     path = "/Users/yuripieters/.local/share/nvim/site/pack/packer/start/targets.vim"

@@ -58,6 +58,7 @@ return require('packer').startup(function(use)
   use 'cespare/vim-toml'
   use 'jvirtanen/vim-octave'
 ---> Miscellaneous
+  use { 'edluffy/specs.nvim', }
 
 --> VCS integration
   use {

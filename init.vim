@@ -21,7 +21,7 @@ set incsearch
 set inccommand=nosplit
 
 " Showing whitespace
-set lcs=tab:>-,space:.,eol:§,extends:…,precedes:…,nbsp:+
+set listchars=tab:>-,space:.,eol:§,extends:…,precedes:…,nbsp:+
 
 " Indentation settings
 set tabstop=4
@@ -81,7 +81,7 @@ augroup initvim
 
 "   >> General >>>
   autocmd InsertLeave * pclose
-  autocmd TermOpen * setlocal nonu nornu
+  autocmd TermOpen * setlocal nonumber norelativenumber
 "   <<<
 
 
@@ -98,8 +98,8 @@ augroup initvim
 
 "     >> tex >>>
   autocmd FileType tex setlocal spell
-  autocmd FileType tex set fo=cqj
-  autocmd FileType tex set tw=115
+  autocmd FileType tex set formatoptions=cqj
+  autocmd FileType tex set textwidth=115
 "     <<<
 
 "     >> git >>>

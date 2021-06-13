@@ -43,4 +43,41 @@ utils.command = function(cmd, repl, attrs, redefine)
   vim.cmd(table.concat(args, " "))
 end
 
+
+YP.autocommands = setmetatable({}, {
+  __index = function(table, key)
+    table[key] = {}
+    return table[key]
+  end,
+})
+
+---@param group string
+---@param autocmds table
+utils.autocmds = function(group, autocmds)
+  vim.cmd(("augroup %s | autocmd!"):format(group))
+  for i, def in ipairs(autocmds) do
+    local cmd
+    if type(def.cmd) == 'function' then
+      local group_cmds = YP.autocommands[group]
+      group_cmds[i] = def.cmd
+      cmd = ('lua YP.autocommands["%s"][%d]()'):format(group, i)
+    elseif type(def.cmd) == 'string' then
+      cmd = def.cmd
+    elseif def.cmd == nil then
+      error(string.format(("cmd not given for autocommand with index %d in augroup %s"):format(i, group)))
+    else
+      error(string.format(("Invalid command passed for autocommand with index %d in augroup %s"):format(i, group)))
+    end
+
+    local once = ''
+    if def.once then once = '++once' end
+    local nested = ''
+    if def.nested then nested = '++nested' end
+
+    vim.cmd(table.concat({"autocmd", def.event, def.pat, once, nested, cmd}, ' '))
+  end
+
+  vim.cmd('augroup END')
+end
+
 return utils

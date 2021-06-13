@@ -1,5 +1,9 @@
 local utils = {}
 
+YP = YP or {}
+
+YP.commands = {}
+
 ---@param cmd string
 ---@param repl string
 ---@param attrs? table<number | string, string | number | boolean>
@@ -24,7 +28,17 @@ utils.command = function(cmd, repl, attrs, redefine)
     end
   end
 
-  vim.list_extend(args, {cmd, repl})
+  table.insert(args, cmd)
+
+  if type(repl) == 'function' then
+    YP.commands[cmd] = repl
+    table.insert(args, ('lua YP.commands["%s"](<f-args>)'):format(cmd))
+  else
+    table.insert(args, repl)
+    if YP.commands[cmd] ~= nil then
+      YP.commands[cmd] = nil
+    end
+  end
 
   vim.cmd(table.concat(args, " "))
 end

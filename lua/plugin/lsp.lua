@@ -43,19 +43,19 @@ local on_attach = function(_, bufnr)
 
   command(
     'LspWorkspaceAddFolder',
-    'lua vim.lsp.buf.add_workspace_folder(<f-args>)',
+    vim.lsp.buf.add_workspace_folder,
     {nargs='?', complete='dir', 'buffer'},
     true
   )
   command(
     'LspWorkspaceRemoveFolder',
-    'lua vim.lsp.buf.remove_workspace_folder(<f-args>)',
+    vim.lsp.buf.remove_workspace_folder,
     {nargs='?', complete='dir', 'buffer'},
     true
   )
   command(
     'LspWorkspaceListFolders',
-    'lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))',
+    vim.lsp.buf.list_workspace_folders,
     {'buffer'},
     true
   )

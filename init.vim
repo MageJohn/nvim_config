@@ -161,10 +161,10 @@ nnoremap Q @@
 "   >> unimpaired >>>
 " Some cherry picked parts of unimpaired
 " Note that the plugin is not installed.
-nnoremap <silent> [l <Cmd>exe "".v:count1."lprevious"<CR>
-nnoremap <silent> ]l <Cmd>exe "".v:count1."lnext"<CR>
-nnoremap <silent> [L <Cmd>exe "".v:count1."lfirst"<CR>
-nnoremap <silent> ]L <Cmd>exe "".v:count1."llast"<CR>
+nnoremap [l <Cmd>exe "".v:count1."lprevious"<CR>
+nnoremap ]l <Cmd>exe "".v:count1."lnext"<CR>
+nnoremap [L <Cmd>exe "".v:count1."lfirst"<CR>
+nnoremap ]L <Cmd>exe "".v:count1."llast"<CR>
 
 function! s:BlankUp(count) abort
   put!=repeat(nr2char(10), a:count)
@@ -178,11 +178,11 @@ function! s:BlankDown(count) abort
   silent! call repeat#set("\<Plug>unimpairedBlankDown", a:count)
 endfunction
 
-nnoremap <silent> [<Space> <Cmd>call <SID>BlankUp(v:count1)<CR>
-nnoremap <silent> ]<Space> <Cmd>call <SID>BlankDown(v:count1)<CR>
+nnoremap [<Space> <Cmd>call <SID>BlankUp(v:count1)<CR>
+nnoremap ]<Space> <Cmd>call <SID>BlankDown(v:count1)<CR>
 
-nnoremap <silent> yow <Cmd>set wrap!<CR>
-nnoremap <silent> yol <Cmd>set list!<CR>
+nnoremap yow <Cmd>set wrap!<CR>
+nnoremap yol <Cmd>set list!<CR>
 
 "   <<<
 
@@ -198,8 +198,8 @@ let g:airline_powerline_fonts = v:true
 let g:airline#extensions#tabline#enabled = v:true
 
 let g:airline#extensions#tabline#buffer_idx_mode = 3
-nmap [b <Cmd>bnext<Cr>
-nmap ]b <Cmd>bprev<Cr>
+nmap [b <Cmd>bnext<CR>
+nmap ]b <Cmd>bprev<CR>
 nmap <expr> gb printf("<Plug>AirlineSelectTab%02d", v:count1)
 
 "   <<<
@@ -451,23 +451,23 @@ let g:float_preview#docked=0
 "   >> LeaderF >>>
 let g:Lf_WindowPosition = 'popup'
 let g:Lf_ShortcutF = '<Leader>ff'
-nmap <silent> <leader>fr <Cmd>LeaderfMru<CR>
-nmap <silent> <leader>F <Cmd>LeaderfSelf<CR>
-nmap <silent> <leader>fg <Cmd>LeaderfRgInteractive<CR>
+nmap <leader>fr <Cmd>LeaderfMru<CR>
+nmap <leader>F <Cmd>LeaderfSelf<CR>
+nmap <leader>fg <Cmd>LeaderfRgInteractive<CR>
 "   <<<
 
 "   >> vim-window >>>
 " Unimpaired mapping
-nnoremap ]r :<C-U>call window#rotate(-1 * v:count1)<cr>
-nnoremap [r :<C-U>call window#rotate(1 * v:count1)<cr>
+nnoremap ]r <Cmd>call window#rotate(-1 * v:count1)<CR>
+nnoremap [r <Cmd>call window#rotate(1 * v:count1)<CR>
 
 " Improved window rotate to work with all layouts
 nmap <C-w>r ]r
 nmap <C-w><C-r> ]r
 
 " Improve window exchange to work with all layouts
-nnoremap <C-w>x :<C-U>call window#exchange(v:count)<cr>
-nnoremap <C-w><c-x> :<C-U>call window#exchange(v:count)<cr>
+nnoremap <C-w>x <Cmd>call window#exchange(v:count)<CR>
+nnoremap <C-w><c-x> <Cmd>call window#exchange(v:count)<CR>
 
 " [g]lue windows together.
 "    l = glue to right side
@@ -477,10 +477,10 @@ nnoremap <C-w><c-x> :<C-U>call window#exchange(v:count)<cr>
 "
 " `normal! 100zh` scrolls window contents into view since it gets messy when
 " narrower window tries refocuses its cursor.
-nnoremap <C-w>gl :<C-U>call window#join('rightbelow vsplit', v:count) <BAR>normal! 100zh<CR>
-nnoremap <C-w>gh :<C-U>call window#join('leftabove vsplit', v:count)  <BAR>normal! 100zh<CR>
-nnoremap <C-w>gj :<C-U>call window#join('belowright split', v:count)  <BAR>normal! 100zh<CR>
-nnoremap <C-w>gk :<C-U>call window#join('aboveleft split', v:count)   <BAR>normal! 100zh<CR>
+nnoremap <C-w>gl <Cmd>call window#join('rightbelow vsplit', v:count) <BAR>normal! 100zh<CR>
+nnoremap <C-w>gh <Cmd>call window#join('leftabove vsplit', v:count)  <BAR>normal! 100zh<CR>
+nnoremap <C-w>gj <Cmd>call window#join('belowright split', v:count)  <BAR>normal! 100zh<CR>
+nnoremap <C-w>gk <Cmd>call window#join('aboveleft split', v:count)   <BAR>normal! 100zh<CR>
 
 " Force a primary window layout.
 " The capital HJKL forces the primary window to a specific direction.
@@ -490,14 +490,14 @@ command! -nargs=* LayoutK call window#layout('vertical ball', 'K', <args>)
 command! -nargs=* LayoutL call window#layout('ball', 'L', <args>)
 
 " Map the layout commands to something if that's your style.
-nnoremap <C-w>gH :<C-U>LayoutH v:count<CR>
-nnoremap <C-w>gJ :<C-U>LayoutJ v:count<CR>
-nnoremap <C-w>gK :<C-U>LayoutK v:count<CR>
-nnoremap <C-w>gL :<C-U>LayoutL v:count<CR>
+nnoremap <C-w>gH <Cmd>LayoutH v:count<CR>
+nnoremap <C-w>gJ <Cmd>LayoutJ v:count<CR>
+nnoremap <C-w>gK <Cmd>LayoutK v:count<CR>
+nnoremap <C-w>gL <Cmd>LayoutL v:count<CR>
 
 " Improve window only, to split to new tab instead
-nnoremap <C-w>o :call window#only()<cr>
-nnoremap <C-w><c-o> :call window#only()<cr>
+nnoremap <C-w>o <Cmd>call window#only()<CR>
+nnoremap <C-w><c-o> <Cmd>call window#only()<CR>
 "   <<<
 
 "   >> pear-tree >>>

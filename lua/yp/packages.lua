@@ -6,6 +6,7 @@ return require('packer').startup(function(use)
 ---> Completion
   use 'ncm2/float-preview.nvim'
   use 'tmsvg/pear-tree'
+  use 'hrsh7th/nvim-compe'
 ---> Refactoring
   use 'machakann/vim-sandwich'
   use 'svermeulen/vim-subversive'

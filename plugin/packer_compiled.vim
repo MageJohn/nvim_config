@@ -99,6 +99,10 @@ _G.packer_plugins = {
     needs_bufread = true,
     path = "/Users/yuripieters/.local/share/nvim/site/pack/packer/opt/neoterm"
   },
+  ["nvim-compe"] = {
+    loaded = true,
+    path = "/Users/yuripieters/.local/share/nvim/site/pack/packer/start/nvim-compe"
+  },
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/Users/yuripieters/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"

@@ -64,6 +64,9 @@ endif
 set termguicolors
 set title
 
+" Completion
+set completeopt=menuone,noselect
+
 " netrw settings
 let g:netrw_winsize = 25
 let g:netrw_browse_split = 4

@@ -36,6 +36,10 @@ set signcolumn=yes
 " Enable mouse
 set mouse=a
 
+" Cursor stuff
+" works in some terminals, so not in ginit.vim
+set guicursor=n-v-sm:block,i-c-ci-ve:ver25,r-cr-o:hor20,a:blinkwait1000-blinkoff500-blinkon1000
+
 " Let block select go where there are no characters
 set virtualedit=block
 

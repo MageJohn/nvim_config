@@ -425,14 +425,6 @@ nmap <Leader>Q <Cmd>bwipeout<CR>
 inoremap <C-L> <C-L>
 "   <<<
 
-"   >> LeaderF >>>
-let g:Lf_WindowPosition = 'popup'
-let g:Lf_ShortcutF = '<Leader>ff'
-nmap <leader>fr <Cmd>LeaderfMru<CR>
-nmap <leader>F <Cmd>LeaderfSelf<CR>
-nmap <leader>fg <Cmd>LeaderfRgInteractive<CR>
-"   <<<
-
 "   >> vim-window >>>
 " Unimpaired mapping
 nnoremap ]r <Cmd>call window#rotate(-1 * v:count1)<CR>

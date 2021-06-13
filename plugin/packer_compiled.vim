@@ -71,10 +71,6 @@ end
 time("try_loadstring definition", false)
 time("Defining packer_plugins", true)
 _G.packer_plugins = {
-  LeaderF = {
-    loaded = true,
-    path = "/Users/yuripieters/.local/share/nvim/site/pack/packer/start/LeaderF"
-  },
   ["base16-vim"] = {
     loaded = false,
     needs_bufread = false,
@@ -117,9 +113,21 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "/Users/yuripieters/.local/share/nvim/site/pack/packer/opt/oceanic-next"
   },
+  ["plenary.nvim"] = {
+    loaded = true,
+    path = "/Users/yuripieters/.local/share/nvim/site/pack/packer/start/plenary.nvim"
+  },
+  ["popup.nvim"] = {
+    loaded = true,
+    path = "/Users/yuripieters/.local/share/nvim/site/pack/packer/start/popup.nvim"
+  },
   ["targets.vim"] = {
     loaded = true,
     path = "/Users/yuripieters/.local/share/nvim/site/pack/packer/start/targets.vim"
+  },
+  ["telescope.nvim"] = {
+    loaded = true,
+    path = "/Users/yuripieters/.local/share/nvim/site/pack/packer/start/telescope.nvim"
   },
   undotree = {
     commands = { "UndotreeToggle" },

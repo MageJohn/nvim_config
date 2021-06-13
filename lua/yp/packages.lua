@@ -37,7 +37,10 @@ return require('packer').startup(function(use)
   }
 ---> Miscellaneous
   use 'tpope/vim-capslock'
-  use { 'Yggdroot/LeaderF', run = './install.sh' }
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+  }
   use 'svermeulen/vim-cutlass'
   use 'svermeulen/vim-yoink'
   use {'mbbill/undotree', cmd = "UndotreeToggle"}

@@ -147,6 +147,9 @@ nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
+" Convenient escape from the terminal
+tnoremap <C-Space> <C-\><C-n>
+
 " Use <Leader>w for window operations
 nnoremap <Leader>w <C-w>
 

@@ -281,14 +281,6 @@ let g:startify_custom_header = [
 nnoremap <Leader>u <Cmd>UndotreeToggle<CR>
 "   <<<
 
-"   >> EasyAlign settings >>>
-"   Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
-"   Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
-
-"   <<<
-
 "   >> is.vim and asterisk maps >>>
 map *  <Plug>(asterisk-z*)<Plug>(is-nohl-1)
 map #  <Plug>(asterisk-z#)<Plug>(is-nohl-1)
@@ -426,13 +418,6 @@ xmap ac <plug>(signify-motion-outer-visual)
 "   >> bbye >>>
 nmap <Leader>q <Cmd>Bwipeout<CR>
 nmap <Leader>Q <Cmd>bwipeout<CR>
-"   <<<
-
-"   >> table-mode >>>
-augroup initvim_tablemode
-  au!
-  au FileType markdown packadd vim-table-mode
-augroup END
 "   <<<
 
 "   >> capslock >>>

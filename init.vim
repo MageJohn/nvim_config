@@ -269,11 +269,11 @@ nmap S <plug>(SubversiveSubstituteToEndOfLine)
 xmap p <plug>(SubversiveSubstitute)
 xmap P <plug>(SubversiveSubstitute)
 
-nmap <leader>s <plug>(SubversiveSubstituteRangeNoPrompt)
-xmap <leader>s <plug>(SubversiveSubstituteRangeNoPrompt)
+nmap <Leader>s <plug>(SubversiveSubstituteRangeNoPrompt)
+xmap <Leader>s <plug>(SubversiveSubstituteRangeNoPrompt)
 
 let g:subversivePromptWithActualCommand = v:true
-nmap <leader>ss <plug>(SubversiveSubstituteWordRange)
+nmap <Leader>ss <plug>(SubversiveSubstituteWordRange)
 "   <<<
 
 "   >> sandwich.vim settings >>>
@@ -435,7 +435,7 @@ function s:zoterocite()
 endfunction
 command! ZoteroCite call s:zoterocite()
 
-noremap <leader>z "=ZoteroCite()<CR>p
+noremap <Leader>z "=ZoteroCite()<CR>p
 inoremap <C-z> <C-r>=ZoteroCite()<CR>
 "   <<<
 

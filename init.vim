@@ -425,10 +425,6 @@ nmap <Leader>Q <Cmd>bwipeout<CR>
 inoremap <C-L> <C-L>
 "   <<<
 
-"   >> float_preview >>>
-let g:float_preview#docked=0
-"   <<<
-
 "   >> LeaderF >>>
 let g:Lf_WindowPosition = 'popup'
 let g:Lf_ShortcutF = '<Leader>ff'

@@ -80,10 +80,6 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "/Users/yuripieters/.local/share/nvim/site/pack/packer/opt/base16-vim"
   },
-  ["float-preview.nvim"] = {
-    loaded = true,
-    path = "/Users/yuripieters/.local/share/nvim/site/pack/packer/start/float-preview.nvim"
-  },
   ["gina.vim"] = {
     loaded = true,
     path = "/Users/yuripieters/.local/share/nvim/site/pack/packer/start/gina.vim"

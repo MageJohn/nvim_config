@@ -4,7 +4,6 @@ return require('packer').startup(function(use)
   use 'neovim/nvim-lspconfig'
   use 'kabouzeid/nvim-lspinstall'
 ---> Completion
-  use 'ncm2/float-preview.nvim'
   use 'tmsvg/pear-tree'
   use 'hrsh7th/nvim-compe'
 ---> Refactoring

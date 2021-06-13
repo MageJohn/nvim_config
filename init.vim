@@ -151,7 +151,7 @@ nnoremap <A-l> <C-w>l
 tnoremap <C-Space> <C-\><C-n>
 
 " Use <Leader>w for window operations
-nnoremap <Leader>w <C-w>
+nmap <Leader>w <C-w>
 
 nnoremap <Leader>fs <Cmd>w<CR>
 

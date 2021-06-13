@@ -204,63 +204,6 @@ nmap <expr> gb printf("<Plug>AirlineSelectTab%02d", v:count1)
 
 "   <<<
 
-"   >> "Neomake settings >>>
-"let g:neomake_python_enabled_makers = ['flake8']
-"let g:neomake_pandoc_enabled_makers = ['md']
-"let g:neomake_tex_enabled_makers = ['chktex', 'make']
-"let g:neomake_rust_enabled_makers = ['cargo']
-"
-"augroup initvim_neomake
-"  autocmd!
-"  autocmd FileType python,rust call neomake#configure#automake('nw', 750)
-"  autocmd FileType pandoc call neomake#configure#automake('w')
-"  autocmd FileType tex call neomake#configure#automake('w')
-"  autocmd User NeomakeFinished echom 'Neomake finished'
-"augroup END
-"
-""   >> Neomake custom makers >>>
-"let g:neomake_pandoc_md_maker = {
-"\   'exe': 'make',
-"\   'args': ['%:t:r.pdf'],
-"\   'append_file': 0
-"\}
-"let g:neomake_tex_xelatex_maker = {
-"\   'exe': 'xelatex',
-"\   'args': ['-shell-escape', '-file-line-error', '-interaction', 'nonstopmode'],
-"\   'errorformat': '%E%f:%l: %m'
-"\}
-"let g:neomake_tex_make_maker = {
-"      \'args': ['%:t:r.pdf'],
-"      \'append_file': 0,
-"      \'errorformat': '%E%f:%l: %m'
-"\}
-"
-"let g:neomake_python_pyrun_maker = {
-"    \ 'exe': 'python',
-"    \ 'errorformat': '%E%f:%l:%c: %m',
-"    \ 'serialize': 1,
-"    \ 'serialize_abort_on_error': 1,
-"    \ 'output_stream': 'stdout',
-"    \ }
-"
-"let g:neomake_python_mypy_args = [
-"      \ '--hide-error-context',
-"      \ '--show-column-numbers',
-"      \ '--show-error-code',
-"      \ '--no-pretty',
-"      \ '--no-color-output',
-"      \ '--no-error-summary',
-"      \ '--hide-absolute-path',
-"      \ '--disallow-incomplete-defs',
-"      \ '--namespace-packages',
-"      \]
-"let g:neomake_python_mypy2_maker = deepcopy(neomake#makers#ft#python#mypy())
-"let g:neomake_python_mypy2_maker.exe = 'mypy'
-"let g:neomake_python_mypy2_maker.args = g:neomake_python_mypy_args + ['--py2']
-""   <<<
-
-"   <<<
-
 "   >> Startify settings >>>
 let g:startify_session_persistence = v:true
 let g:startify_session_dir = stdpath("data")..'/session'

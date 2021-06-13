@@ -4,8 +4,15 @@ return require('packer').startup(function(use)
   use 'neovim/nvim-lspconfig'
   use 'kabouzeid/nvim-lspinstall'
 ---> Completion
-  use 'tmsvg/pear-tree'
   use 'hrsh7th/nvim-compe'
+  use {
+    'windwp/nvim-autopairs',
+    config = function()
+      require("nvim-autopairs").setup {
+        enable_check_bracket_line = true
+      }
+    end
+  }
 ---> Refactoring
   use 'machakann/vim-sandwich'
   use 'svermeulen/vim-subversive'

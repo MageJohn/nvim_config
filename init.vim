@@ -477,15 +477,6 @@ nnoremap <C-w>o <Cmd>call window#only()<CR>
 nnoremap <C-w><c-o> <Cmd>call window#only()<CR>
 "   <<<
 
-"   >> pear-tree >>>
-" Disable 'dot repeatable expand' because it messes up too often.
-let g:pear_tree_repeatable_expand = v:false
-" Try to balance pairs instead of greedily adding/deleting pairs
-let g:pear_tree_smart_openers = v:true
-let g:pear_tree_smart_closers = v:true
-let g:pear_tree_smart_backspace = v:true
-"   <<<
-
 " <<<
 
 " >> Colorscheme settings >>>

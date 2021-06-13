@@ -95,6 +95,11 @@ _G.packer_plugins = {
     needs_bufread = true,
     path = "/Users/yuripieters/.local/share/nvim/site/pack/packer/opt/neoterm"
   },
+  ["nvim-autopairs"] = {
+    config = { "\27LJ\2\n^\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\30enable_check_bracket_line\2\nsetup\19nvim-autopairs\frequire\0" },
+    loaded = true,
+    path = "/Users/yuripieters/.local/share/nvim/site/pack/packer/start/nvim-autopairs"
+  },
   ["nvim-compe"] = {
     loaded = true,
     path = "/Users/yuripieters/.local/share/nvim/site/pack/packer/start/nvim-compe"
@@ -111,10 +116,6 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     path = "/Users/yuripieters/.local/share/nvim/site/pack/packer/opt/oceanic-next"
-  },
-  ["pear-tree"] = {
-    loaded = true,
-    path = "/Users/yuripieters/.local/share/nvim/site/pack/packer/start/pear-tree"
   },
   ["targets.vim"] = {
     loaded = true,
@@ -249,6 +250,10 @@ _G.packer_plugins = {
 }
 
 time("Defining packer_plugins", false)
+-- Config for: nvim-autopairs
+time("Config for nvim-autopairs", true)
+try_loadstring("\27LJ\2\n^\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\30enable_check_bracket_line\2\nsetup\19nvim-autopairs\frequire\0", "config", "nvim-autopairs")
+time("Config for nvim-autopairs", false)
 -- Config for: vim-asterisk
 time("Config for vim-asterisk", true)
 try_loadstring("\27LJ\2\n2\0\0\2\0\3\0\0056\0\0\0009\0\1\0+\1\2\0=\1\2\0K\0\1\0\21asterisk#keeppos\6g\bvim\0", "config", "vim-asterisk")

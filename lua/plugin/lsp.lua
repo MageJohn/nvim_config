@@ -82,6 +82,9 @@ local server_configs = {
       }
     }
   },
+  arduino = {
+    clangd_exe = '/usr/local/Cellar/llvm/12.0.0/bin/clangd'
+  }
 }
 
 local function setup_servers()
@@ -97,6 +100,8 @@ local function setup_servers()
     )
   end
 end
+
+require('plugin/lsp-servers/arduino-language-server')
 
 setup_servers()
 

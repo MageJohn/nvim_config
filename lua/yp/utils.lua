@@ -80,4 +80,22 @@ utils.autocmds = function(group, autocmds)
   vim.cmd('augroup END')
 end
 
+
+---@param t table
+function utils.flatten_not_null(t)
+  return vim.tbl_filter(
+    function(v) return v ~= nil end,
+    vim.tbl_flatten(t)
+  )
+end
+
+utils.path = {}
+
+local pathsep = package.config:sub(1, 1)
+function utils.path.join(...)
+  local result = table.concat({...}, pathsep):gsub(pathsep..pathsep..'+', pathsep)
+  return result
+end
+
+
 return utils

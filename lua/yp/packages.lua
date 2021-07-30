@@ -57,6 +57,7 @@ return require('packer').startup(function(use)
   use 'lluchs/vim-wren'
   use 'cespare/vim-toml'
   use 'jvirtanen/vim-octave'
+  use 'NoahTheDuke/vim-just'
 ---> Miscellaneous
   use { 'edluffy/specs.nvim', }
 

@@ -9,7 +9,7 @@ plugin.source = function(force)
     return
   end
 
-  for _, mod in ipairs(vim.api.nvim_get_runtime_file('lua/plugin/**/*.lua', true)) do
+  for _, mod in ipairs(vim.api.nvim_get_runtime_file('lua/plugin/*.lua', true)) do
     local ok, msg = pcall(dofile, mod)
 
     if not ok then

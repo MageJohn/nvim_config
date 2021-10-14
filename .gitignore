@@ -1,3 +1,4 @@
 .netrwhist
 *.local.vim
 pack/minpac/
+packer_compiled.lua

@@ -58,6 +58,8 @@ return require('packer').startup(function(use)
   use 'cespare/vim-toml'
   use 'jvirtanen/vim-octave'
   use 'NoahTheDuke/vim-just'
+  use 'Konstruktionist/vim-fish'
+  use 'm-pilia/vim-pkgbuild'
 ---> Miscellaneous
   use { 'edluffy/specs.nvim', }
 

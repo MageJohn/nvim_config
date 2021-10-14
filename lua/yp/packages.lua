@@ -99,4 +99,9 @@ return require('packer').startup(function(use)
         vim.g.neoterm_default_mod = 'botright'
     end
   }
+  use {
+    'iamcco/markdown-preview.nvim',
+    ft = {'markdown', 'pandoc.markdown', 'rmd'},
+    run = ':call mkdp#util#install()'
+  }
 end)

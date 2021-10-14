@@ -232,35 +232,6 @@ map g# <Plug>(asterisk-zg#)<Plug>(is-nohl-1)
 
 "   <<<
 
-"   >> Cutlass >>>
-"   To cut text with Cutlass we need these mappings
-nnoremap x d
-xnoremap x d
-
-nnoremap xx dd
-nnoremap X D
-" With more control over what goes into the clipboard, now we can use the
-" system clipboard by default.
-set clipboard=unnamedplus
-"   <<<
-
-"   >>  Yoink >>>
-let g:yoinkSyncNumberedRegisters = v:true
-let g:yoinkIncludeDeleteOperations = v:true
-let g:yoinkSavePersistently = v:true
-let g:yoinkMoveCursorToEndOfPaste = v:true
-let g:yoinkSwapClampAtEnds = v:false
-
-nmap <M-]> <plug>(YoinkPostPasteSwapBack)
-nmap <M-[> <plug>(YoinkPostPasteSwapForward)
-
-nmap [y <plug>(YoinkRotateBack)
-nmap ]y <plug>(YoinkRotateForward)
-
-nmap p <plug>(YoinkPaste_p)
-nmap P <plug>(YoinkPaste_P)
-"   <<<
-
 "   >> Subversive >>>
 nmap s <plug>(SubversiveSubstitute)
 nmap ss <plug>(SubversiveSubstituteLine)

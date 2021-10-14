@@ -28,7 +28,6 @@ return require('packer').startup(function(use)
   use 'wellle/targets.vim'
   use { 'MageJohn/base16-vim', opt = true }
   use { 'arithran/vim-delete-hidden-buffers', cmd = 'DeleteHiddenBuffers' }
-  use { 'edluffy/specs.nvim', }
   use {
     'haya14busa/vim-asterisk',
     config = function() vim.g["asterisk#keeppos"] = true end

@@ -190,20 +190,6 @@ nnoremap yol <Cmd>set list!<CR>
 
 " >> Plugin settings >>>
 
-"   >> vim-airline settings >>>
-" Don't show mode (airline does this)
-set noshowmode
-
-let g:airline_powerline_fonts = v:true
-let g:airline#extensions#tabline#enabled = v:true
-
-let g:airline#extensions#tabline#buffer_idx_mode = 3
-nmap [b <Cmd>bnext<CR>
-nmap ]b <Cmd>bprev<CR>
-nmap <expr> gb printf("<Plug>AirlineSelectTab%02d", v:count1)
-
-"   <<<
-
 "   >> Startify settings >>>
 let g:startify_session_persistence = v:true
 let g:startify_session_dir = stdpath("data")..'/session'

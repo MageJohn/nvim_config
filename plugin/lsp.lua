@@ -101,7 +101,7 @@ local function setup_servers()
   end
 end
 
-require('plugin/lsp-servers/arduino-language-server')
+require('lsp-servers/arduino-language-server')
 
 setup_servers()
 

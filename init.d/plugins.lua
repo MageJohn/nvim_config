@@ -7,7 +7,10 @@ return require('packer').startup(function(use)
   use 'ddrscott/vim-window'
   use 'enricobacis/vim-airline-clock'
   use 'haya14busa/is.vim'
-  use 'hrsh7th/nvim-compe'
+  use {
+    'hrsh7th/nvim-compe',
+    config = 'require "pkginit.nvim-compe"'
+  }
   use 'jvirtanen/vim-octave'
   use 'kabouzeid/nvim-lspinstall'
   use 'kana/vim-textobj-entire'
@@ -23,9 +26,15 @@ return require('packer').startup(function(use)
   use 'somini/vim-textobj-fold'
   use 'svermeulen/vim-subversive'
   use 'tpope/vim-capslock'
-  use 'vim-airline/vim-airline'
+  use {
+    'vim-airline/vim-airline',
+    config = 'require "pkginit.vim-airline"'
+  }
   use 'vim-airline/vim-airline-themes'
-  use 'wellle/targets.vim'
+  use {
+    'wellle/targets.vim',
+    config = 'require "pkginit.targets"'
+  }
   use { 'MageJohn/base16-vim', opt = true }
   use { 'arithran/vim-delete-hidden-buffers', cmd = 'DeleteHiddenBuffers' }
   use {
@@ -47,7 +56,8 @@ return require('packer').startup(function(use)
   use { 'moll/vim-bbye', cmd = { 'Bdelete', 'Bwipeout'} }
   use {
     'nvim-telescope/telescope.nvim',
-    requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+    requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
+    config = 'require "pkginit.telescope"'
   }
   use { 'tpope/vim-abolish', cmd = {'Abolish', 'Subvert', 'S'} }
   use { 'tpope/vim-scriptease', cmd = {'Messages', 'Vopen'} }

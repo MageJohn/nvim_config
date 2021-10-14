@@ -420,6 +420,9 @@ if filereadable(s:local_init_file)
     execute "source" s:local_init_file
 endif
 
+runtime! init.d/*.vim
+runtime! init.d/*.lua
+
 " <<<
 
 " vi: foldmethod=marker foldmarker=>>>,<<< foldcolumn=1

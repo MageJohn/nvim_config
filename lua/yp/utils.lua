@@ -97,21 +97,22 @@ function utils.path.join(...)
   return result
 end
 
---Lua equivalent to :nmap
+--Lua equivalent to :map
 --@param lhs string
 --@param rhs string
 --@param opts table
-function utils.nmap(lhs, rhs, opts)
-  return vim.api.nvim_set_keymap('n', lhs, rhs, opts or {})
+function utils.map(lhs, rhs, opts)
+  return vim.api.nvim_set_keymap('', lhs, rhs, opts or {})
 end
 
---Lua equivalent to :imap
---@param lhs string
---@param rhs string
---@param opts table
-function utils.imap(lhs, rhs, opts)
-  return vim.api.nvim_set_keymap('i', lhs, rhs, opts or {})
+function utils.map_bang(lhs, rhs, opts)
+  return vim.api.nvim_set_keymap('!', lhs, rhs, opts or {})
 end
 
+for _,mode in ipairs {'', 'n', 'v', 'x', 's', 'o', 'i', 'l', 'c', 't'} do
+  utils[mode..'map'] = function(lhs, rhs, opts)
+    return vim.api.nvim_set_keymap(mode, lhs, rhs, opts or {})
+  end
+end
 
 return utils

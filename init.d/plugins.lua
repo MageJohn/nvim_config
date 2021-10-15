@@ -1,4 +1,5 @@
 return require('packer').startup(function(use)
+  use 'JoanEspasa/vim-eprime'
   use 'Julian/vim-textobj-variable-segment'
   use 'Konstruktionist/vim-fish'
   use 'NoahTheDuke/vim-just'

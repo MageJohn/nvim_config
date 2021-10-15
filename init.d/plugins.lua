@@ -45,7 +45,8 @@ return require('packer').startup(function(use)
   use 'neovim/nvim-lspconfig'
   use {
     'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate'
+    run = ':TSUpdate',
+    config = 'require "pkginit.nvim-treesitter"'
   }
   use 'somini/vim-textobj-fold'
   use {

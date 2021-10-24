@@ -14,8 +14,8 @@ nmap('srb', '<Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-c
 xmap('sd', '<Plug>(operator-sandwich-delete)')
 xmap('sr', '<Plug>(operator-sandwich-replace)')
 
---   >> Recipes >>>
-local recipes = vim.fn.deepcopy({vim.g["sandwich#default_recipes"]})
+vim.cmd[[runtime autoload/sandwich.vim]]
+local recipes = vim.g["sandwich#default_recipes"]
 vim.list_extend(recipes, {
    {
      buns = {'(', ')'},

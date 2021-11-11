@@ -14,7 +14,10 @@ return require("packer").startup(function(use)
       vim.g.neoterm_default_mod = "botright"
     end,
   })
-  use("windwp/nvim-autopairs")
+  use({
+    "windwp/nvim-autopairs",
+    config = 'require "pkginit.nvim-autopairs"',
+  })
   use({ "hrsh7th/nvim-compe", config = 'require "pkginit.nvim-compe"' })
   use("neovim/nvim-lspconfig")
   use("kabouzeid/nvim-lspinstall")

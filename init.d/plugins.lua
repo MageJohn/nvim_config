@@ -1,5 +1,7 @@
 return require("packer").startup(function(use)
   use({ "MageJohn/base16-vim", opt = true })
+  use({ 'Olical/conjure', config = 'require "pkginit.conjure"' })
+  use('bakpakin/fennel.vim')
   use("lambdalisue/gina.vim")
   use("haya14busa/is.vim")
   use({

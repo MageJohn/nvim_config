@@ -1,7 +1,16 @@
 return require("packer").startup(function(use)
   use({ "MageJohn/base16-vim", opt = true })
-  use({ 'Olical/conjure', config = 'require "pkginit.conjure"' })
-  use('bakpakin/fennel.vim')
+  use({ "Olical/conjure", config = 'require "pkginit.conjure"' })
+  -- configured in init.d/auto-mappings.lua
+  use({
+    "ms-jpq/coq_nvim",
+    branch = "coq",
+    requires = {
+      { "ms-jpq/coq.artifacts", branch = "artifacts" },
+      { "ms-jpq/coq.thirdparty", branch = "3p" },
+    },
+  })
+  use("bakpakin/fennel.vim")
   use("lambdalisue/gina.vim")
   use("haya14busa/is.vim")
   use({
@@ -16,14 +25,15 @@ return require("packer").startup(function(use)
       vim.g.neoterm_default_mod = "botright"
     end,
   })
-  use({
-    "windwp/nvim-autopairs",
-    config = 'require "pkginit.nvim-autopairs"',
-  })
-  use({ "hrsh7th/nvim-compe", config = 'require "pkginit.nvim-compe"' })
+  -- configured in init.d/auto-mappings.lua
+  use({ "windwp/nvim-autopairs" })
   use("neovim/nvim-lspconfig")
   use("kabouzeid/nvim-lspinstall")
-  use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", config = 'require "pkginit.nvim-treesitter"' })
+  use({
+    "nvim-treesitter/nvim-treesitter",
+    run = ":TSUpdate",
+    config = 'require "pkginit.nvim-treesitter"',
+  })
   use({ "mhartington/oceanic-next", opt = true })
   use({ "wellle/targets.vim", config = 'require "pkginit.targets"' })
   use({

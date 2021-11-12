@@ -82,6 +82,8 @@ augroup initvim
 "   >> General >>>
   autocmd InsertLeave * pclose
   autocmd TermOpen * setlocal nonumber norelativenumber
+
+  autocmd FileType qf nnoremap <buffer> <esc> <Cmd>cclose<CR>
 "   <<<
 
 

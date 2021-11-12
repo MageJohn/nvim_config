@@ -81,6 +81,11 @@ return require("packer").startup(function(use)
   use("NoahTheDuke/vim-just")
   use("jvirtanen/vim-octave")
   use("m-pilia/vim-pkgbuild")
+  use({
+    "vim-pandoc/vim-pandoc",
+    setup = 'require "pkginit.vim-pandoc"',
+    requires = { "vim-pandoc/vim-pandoc-syntax" }
+  })
   use("wlangstroth/vim-racket")
   use({
     "machakann/vim-sandwich",

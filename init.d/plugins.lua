@@ -27,8 +27,8 @@ return require("packer").startup(function(use)
   })
   -- configured in init.d/auto-mappings.lua
   use({ "windwp/nvim-autopairs" })
+  use("williamboman/nvim-lsp-installer")
   use("neovim/nvim-lspconfig")
-  use("kabouzeid/nvim-lspinstall")
   use({
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",

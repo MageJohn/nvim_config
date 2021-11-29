@@ -1,11 +1,6 @@
-local lspinstall = require("lspinstall")
-local lspconfig = require("lspconfig")
-local command = require("yp.utils").command
+local lsp_installer = require("nvim-lsp-installer")
 
 local on_attach = function(_, bufnr)
-  ---@param mode string one of ''|'!'|'n'|'v'|'x'|'s'|'o'|'i'|'l'|'c'|'t'
-  ---@param lhs string the key sequence being mapped
-  ---@param rhs string a lua expression that will be triggered by the mapping
   local function map(mode, lhs, rhs)
     vim.api.nvim_buf_set_keymap(
       bufnr,
@@ -15,40 +10,31 @@ local on_attach = function(_, bufnr)
       { noremap = true, silent = true }
     )
   end
-  ---@param lhs string the key sequence being mapped
-  ---@param rhs string a lua expression that will be triggered by the mapping
-  local function nmap(lhs, rhs)
-    map("n", lhs, rhs)
-  end
-  ---@param lhs string the key sequence being mapped
-  ---@param rhs string a lua expression that will be triggered by the mapping
-  local function imap(lhs, rhs)
-    map("i", lhs, rhs)
-  end
 
   --Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  nmap("gD", "vim.lsp.buf.declaration()")
-  nmap("gd", "vim.lsp.buf.definition()")
-  nmap("<leader>D", "vim.lsp.buf.type_definition()")
-  nmap("gr", "vim.lsp.buf.references()")
-  nmap("gi", "vim.lsp.buf.implementation()")
-  nmap("K", "vim.lsp.buf.hover()")
-  nmap("<C-k>", "vim.lsp.buf.signature_help()")
-  imap("<C-k>", "vim.lsp.buf.signature_help()")
-  nmap("<leader>e", "vim.lsp.diagnostic.show_line_diagnostics()")
-  nmap("[d", "vim.lsp.diagnostic.goto_prev()")
-  nmap("]d", "vim.lsp.diagnostic.goto_next()")
-  nmap("<leader>ld", "vim.lsp.diagnostic.set_loclist()")
-  nmap("<leader>ca", "vim.lsp.buf.code_action()")
-  nmap("<leader>cf", "vim.lsp.buf.formatting()")
-  nmap("<leader>cr", "vim.lsp.buf.rename()")
+  map("n", "gD", "vim.lsp.buf.declaration()")
+  map("n", "gd", "vim.lsp.buf.definition()")
+  map("n", "<leader>D", "vim.lsp.buf.type_definition()")
+  map("n", "gr", "vim.lsp.buf.references()")
+  map("n", "gi", "vim.lsp.buf.implementation()")
+  map("n", "K", "vim.lsp.buf.hover()")
+  map("n", "<C-k>", "vim.lsp.buf.signature_help()")
+  map("i", "<C-k>", "vim.lsp.buf.signature_help()")
+  map("n", "<leader>e", "vim.lsp.diagnostic.show_line_diagnostics()")
+  map("n", "[d", "vim.lsp.diagnostic.goto_prev()")
+  map("n", "]d", "vim.lsp.diagnostic.goto_next()")
+  map("n", "<leader>ld", "vim.lsp.diagnostic.set_loclist()")
+  map("n", "<leader>ca", "vim.lsp.buf.code_action()")
+  map("n", "<leader>cf", "vim.lsp.buf.formatting()")
+  map("n", "<leader>cr", "vim.lsp.buf.rename()")
 
   -- Commands
 
+  local command = require("yp.utils").command
   command(
     "LspWorkspaceAddFolder",
     vim.lsp.buf.add_workspace_folder,
@@ -65,7 +51,7 @@ local on_attach = function(_, bufnr)
 end
 
 local server_configs = {
-  lua = {
+  sumneko_lua = {
     settings = {
       Lua = {
         runtime = {
@@ -85,33 +71,14 @@ local server_configs = {
       },
     },
   },
-  arduino = {
-    clangd_exe = "/usr/local/Cellar/llvm/12.0.0/bin/clangd",
-  },
 }
 
 local capabilities = require("coq").lsp_ensure_capabilities()
 
-local function setup_servers()
-  lspinstall.setup()
-  local servers = lspinstall.installed_servers()
-  for _, server in pairs(servers) do
-    lspconfig[server].setup(
-      vim.tbl_deep_extend(
-        "error",
-        { on_attach = on_attach, capabilities = capabilities },
-        server_configs[server] or {}
-      )
-    )
+lsp_installer.on_server_ready(function(server)
+  local opts = { on_attach = on_attach, capabilities = capabilities }
+  if server_configs[server.name] then
+    opts = vim.tbl_deep_extend("force", opts, server_configs[server.name])
   end
-end
-
-require("lsp-servers/arduino-language-server")
-
-setup_servers()
-
--- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
-lspinstall.post_install_hook = function()
-  setup_servers() -- reload installed servers
-  vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
-end
+  server:setup(opts)
+end)

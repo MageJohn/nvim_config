@@ -92,7 +92,7 @@ return require("packer").startup(function(use)
     config = 'require "pkginit.vim-sandwich"',
     keys = { "sm", "sd", "sdb", "sr", "srb", { "x", "sm" }, { "x", "sd" }, { "x", "sr" } },
   })
-  use({ "tpope/vim-scriptease", cmd = { "Messages", "Vopen" } })
+  use("tpope/vim-scriptease")
   use({
     "mhinz/vim-signify",
     event = { "BufNewFile", "BufRead" },

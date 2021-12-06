@@ -141,4 +141,5 @@ return require("packer").startup(function(use)
     },
   })
   use("lluchs/vim-wren")
+  use("nanotee/zoxide.vim")
 end)

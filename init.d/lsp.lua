@@ -77,11 +77,18 @@ local server_configs = {
 require("nvim-lsp-installer.servers").register(require("yp.pylsp-custom"))
 
 local capabilities = require("coq").lsp_ensure_capabilities()
+local default_opts = { on_attach = on_attach, capabilities = capabilities }
 
 lsp_installer.on_server_ready(function(server)
-  local opts = { on_attach = on_attach, capabilities = capabilities }
-  if server_configs[server.name] then
-    opts = vim.tbl_deep_extend("force", opts, server_configs[server.name])
-  end
-  server:setup(opts)
+  local opts = server_configs[server.name]
+  server:setup(opts and vim.tbl_deep_extend("force", default_opts, opts) or default_opts)
 end)
+
+local success, local_servers = pcall(require, "yp.local.local-lsp-servers")
+if success then
+  local lspconfig = require("lspconfig")
+  for _, server in ipairs(local_servers) do
+    local opts = server_configs[server]
+    lspconfig[server].setup (opts and vim.tbl_deep_extend("force", default_opts, opts) or default_opts)
+  end
+end

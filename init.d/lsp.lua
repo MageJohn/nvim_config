@@ -29,6 +29,7 @@ local on_attach = function(_, bufnr)
   map("n", "]d", "vim.lsp.diagnostic.goto_next()")
   map("n", "<leader>ld", "vim.lsp.diagnostic.set_loclist()")
   map("n", "<leader>ca", "vim.lsp.buf.code_action()")
+  map("v", "<leader>ca", "vim.lsp.buf.range_code_action()")
   map("n", "<leader>cf", "vim.lsp.buf.formatting()")
   map("n", "<leader>cr", "vim.lsp.buf.rename()")
 

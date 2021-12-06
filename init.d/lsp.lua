@@ -73,6 +73,8 @@ local server_configs = {
   },
 }
 
+require("nvim-lsp-installer.servers").register(require("yp.pylsp-custom"))
+
 local capabilities = require("coq").lsp_ensure_capabilities()
 
 lsp_installer.on_server_ready(function(server)

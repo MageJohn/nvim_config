@@ -1,0 +1,12 @@
+snippet main
+alias pub fn main
+    pub fn main() anyerror!void {
+        ${0:body}
+    }
+
+snippet init-exe
+    const std = @import("std");
+
+    pub fn main() anyerror!void {
+
+    }

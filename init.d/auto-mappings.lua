@@ -18,7 +18,7 @@ local function remap(mode, lhs, rhs)
 end
 
 vim.g.coq_settings = {
-  keymap = { recommended = false },
+  keymap = { recommended = false, eval_snips = '<leader>j' },
   auto_start = "shut-up",
 }
 

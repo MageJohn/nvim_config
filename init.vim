@@ -114,6 +114,10 @@ augroup initvim
 "     >> vim, lua >>>
   autocmd FileType vim,lua setlocal tabstop=2 shiftwidth=2 expandtab
 "     <<<
+
+"     >> zig >>>
+  autocmd FileType zig setlocal comments=b://,b:///
+"     <<<
 "   <<<
 
 "   >> Non-default extensions >>>
